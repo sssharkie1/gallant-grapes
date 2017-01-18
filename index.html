@@ -88,18 +88,11 @@
         <div class="row">
             <div class="col s12 m12">
 
-                
                 <a class='dropdown-button btn btn-large blue lighten-3 center-align' href='#'
-                   data-activates='dropdown1'>Find a new favorite beer<span> <i
-                        class="fa fa-angle-double-down"></i></span></a>
+                   data-activates='dropdown1' id="findBeer">Find a new favorite beer<span> <i
+                        class="fa fa-angle-double-down"></i></span></a>  
 
                 
-                <ul id='dropdown1' class='dropdown-content categories'>
-                    <li><a href="#!" class="blue-text text-lighten-3" data-category="beerColor">Color</a></li>
-                    <li><a href="#!" class="blue-text text-lighten-3" data-category="beerHoppiness">Hoppiness</a></li>
-                    <li><a href="#!" class="blue-text text-lighten-3" data-category="beerABV">ABV (Alcohol by Volume)</a></li>
-                    
-                </ul>
             </div>
 
          
@@ -110,8 +103,47 @@
 
 </div>
 
+<div class="section scrollspy" id="selection">
+    <div class="container">
+        <h2 class="header text_b">Color</h2>
+        <button type="button" class="btn btn-default btn-lg">Light</button>
+        <button type="button" class="btn btn-default btn-lg">Medium</button>
+        <button type="button" class="btn btn-default btn-lg">Dark</button>
+        <button type="button" class="btn btn-default btn-lg">No preference</button>
+      
+        <div class="row" id="cardsAppearHere"></div>
+    </div> <!-- color -->
+
+    <div class="container">
+        <h2 class="header text_b">Hoppiness</h2>
+        <button type="button" class="btn btn-default btn-lg">Not Hoppy</button> <!-- IBU 0-25 -->
+        <button type="button" class="btn btn-default btn-lg">Kind of Hoppy</button> <!-- IBU 26-50 -->
+        <button type="button" class="btn btn-default btn-lg">Hoppy</button> <!-- IBU 51-75 -->
+        <button type="button" class="btn btn-default btn-lg">Very Hoppy</button> <!-- IBU 76-100 -->
+        <button type="button" class="btn btn-default btn-lg">No preference</button> 
+      
+        <div class="row" id="cardsAppearHere"></div>
+    </div> <!-- hoppiness -->
+
+    <div class="container">
+        <h2 class="header text_b">ABV (Alcohol by Volume)</h2>
+        <button type="button" class="btn btn-default btn-lg">I want to enjoy a beer or two.</button> <!-- ABV 0-6% -->
+        <button type="button" class="btn btn-default btn-lg">I want to enjoy a beer with a little kick.</button> <!-- ABV 6.1-8.5% -->
+        <button type="button" class="btn btn-default btn-lg">I want a beer with a big kick.</button> <!-- ABV 8.6-10% -->
+        <button type="button" class="btn btn-default btn-lg">I have a driver. Bring it on!</button> <!-- ABV 10.1-100% -->
+        <button type="button" class="btn btn-default btn-lg">No preference</button>
+      
+        <div class="row" id="cardsAppearHere"></div>
+    </div> <!-- abv -->
+
+</div>
+
+<div class="parallax-container">
+    <div class="parallax"><img src=""></div>
+</div>
 
 
+<!-- == RECOMMENDED SECTION == -->
 <div class="section scrollspy" id="cards">
     <div class="container">
         <h2 class="header text_b">Your Recommended Beers:</h2>
