@@ -1,45 +1,64 @@
 /*GALAXY GROUP PROJECT. OWNERS: Saidi, Christine and Nigel*/
 
-
-
-
+/*main color palate #e17d1f (orange) and #92a55e (green)
+/*sarah note-find a new favorite bar button*/
 .btn-large {
 
 	width: 100%;
 	height: 64px;
   font-size: 1.25em;
+  background: #E17D1F;
 }
 
+#missionStatement{
+  background: #92a55e;
+  color: #fff;
+}
+/*sarah note-for map section only*/
 #map {
 
 	width: 100%;
   height: 400px;
-        
 }
 
+/*sarah note-cant find on page*/
 img.cardImage {
 	height: 200px;
 	width: 300px;
-
 }
 
+/*sarah note-can't find on page*/
 .itemInfo {
 	margin-bottom: 5px;
 }
 
+/*sarah note-top left of page - logo and image only*/
 nav .brand-logo {
   letter-spacing: 0.0525em;
   font-weight: 300;
 
 }
+/*sarah note-for hops-background image*/
+#hopsSection {
+  background-repeat: no-repeat;
+  background-size: 100%;
 
-
-
-
-input[type=text], input[type=email] { 
-  color: white;
 }
 
+#grainSection{
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+ 
+#grainSectionFonts {
+  color: #fff
+}
+}
+/*sarah note-contact us form only*/
+input[type=text], input[type=email] { 
+  color: red;
+}
+/*sarah note- - need these?*/
 /*COLORS FOR THE LOCATION TYPE BAR*/
   /* label color */
    .input-field label {

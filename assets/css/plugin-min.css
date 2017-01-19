@@ -2301,6 +2301,7 @@ textarea {
     color: inherit;
     font: inherit;
     margin: 0
+
 }
 
 button {
@@ -2695,7 +2696,7 @@ ul.staggered-list li {
 footer.page-footer {
     margin-top: 20px;
     padding-top: 20px;
-    background-color: #ee6e73
+
 }
 
 footer.page-footer .footer-copyright {
@@ -6519,7 +6520,9 @@ input[type=range]+.thumb {
 .container {
     margin: 0 auto;
     max-width: 1280px;
-    width: 90%
+    width: 90%;
+    margin-top: 10px; /*sarah - added for bottle position*/
+
 }
 
 @media only screen and (min-width: 601px) {
@@ -7731,11 +7734,12 @@ footer.page-footer .footer-copyright {
     line-height: inherit
 }
 
+/*sarah note - beer selections before clicked*/
 .btn,
 .btn-large {
     text-decoration: none;
     color: #fff;
-    background-color: #26a69a;
+    background-color: #E17D1F;
     text-align: center;
     letter-spacing: .5px;
     -webkit-transition: .2s ease-out;
@@ -7746,11 +7750,13 @@ footer.page-footer .footer-copyright {
     cursor: pointer
 }
 
+/*for large find a new favorite beer button*/
 .btn:hover,
 .btn-large:hover {
-    background-color: #2bbbad
+    background-color: #92a55e
 }
 
+/*sarah note - cant find*/
 .btn-floating {
     display: inline-block;
     color: #fff;
@@ -7761,7 +7767,7 @@ footer.page-footer .footer-copyright {
     height: 37px;
     line-height: 37px;
     padding: 0;
-    background-color: #26a69a;
+    background-color: #92a55e;
     border-radius: 50%;
     transition: .3s;
     cursor: pointer;
