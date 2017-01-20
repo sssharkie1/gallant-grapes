@@ -111,35 +111,49 @@
 <div class="section scrollspy" id="grainSection" style="background-image: url(assets/img/grains6.jpg)">
     <div class="container">
         <h2 id= "grainSectionFonts">Color</h2>
-        <button type="button" class="btn btn-default btn-lg">Light</button> <!-- SRM 0-13 -->
-        <button type="button" class="btn btn-default btn-lg">Medium</button> <!-- SRM 13-26 -->
-        <button type="button" class="btn btn-default btn-lg">Dark</button> <!-- SRM >=26 -->
-        <button type="button" class="btn btn-default btn-lg">No preference</button> 
+        <button type="button" class="btn btn-default btn-lg" id="colorButton1" class="selectionButtons">Light</button> <!-- SRM 0-13 -->
+        <button type="button" class="btn btn-default btn-lg" id="colorButton2" class="selectionButtons">Medium</button> <!-- SRM 13-26 -->
+        <button type="button" class="btn btn-default btn-lg" id="colorButton3" class="selectionButtons">Dark</button> <!-- SRM >=26 -->
+        <button type="button" class="btn btn-default btn-lg" id="colorButton4" class="selectionButtons">No preference</button> 
       
         <div class="row" id="cardsAppearHere"></div>
     </div> <!-- color -->
 
     <div class="container">
         <h2 id="grainSectionFonts">Hoppiness</h2>
-        <button type="button" class="btn btn-default btn-lg">Not Hoppy</button> <!-- IBU 0-15 -->
-        <button type="button" class="btn btn-default btn-lg">Kind of Hoppy</button> <!-- IBU 16-30 -->
-        <button type="button" class="btn btn-default btn-lg">Hoppy</button> <!-- IBU 31-45 -->
-        <button type="button" class="btn btn-default btn-lg">Very Hoppy</button> <!-- IBU <=46 -->
-        <button type="button" class="btn btn-default btn-lg">No preference</button> 
+        <button type="button" class="btn btn-default btn-lg" id="hoppinessButton1" class="selectionButtons">Not Hoppy</button> <!-- IBU 0-15 -->
+        <button type="button" class="btn btn-default btn-lg" id="hoppinessButton2" class="selectionButtons">Kind of Hoppy</button> <!-- IBU 16-30 -->
+        <button type="button" class="btn btn-default btn-lg" id="hoppinessButton3" class="selectionButtons">Hoppy</button> <!-- IBU 31-45 -->
+        <button type="button" class="btn btn-default btn-lg" id="hoppinessButton4" class="selectionButtons">Very Hoppy</button> <!-- IBU <=46 -->
+        <button type="button" class="btn btn-default btn-lg" id="hoppinessButton5" class="selectionButtons">No preference</button> 
       
         <div class="row" id="cardsAppearHere"></div>
     </div> <!-- hoppiness -->
 
     <div class="container">
         <h2 id="grainSectionFonts">ABV</h2>
-        <button type="button" class="btn btn-default btn-lg">I want to enjoy a beer or two.</button> <!-- ABV 0-5% -->
-        <button type="button" class="btn btn-default btn-lg">I want to enjoy a beer with a little kick.</button> <!-- ABV 5.1-7.4% -->
-        <button type="button" class="btn btn-default btn-lg">I want a beer with a big kick.</button> <!-- ABV 7.5-10% -->
-        <button type="button" class="btn btn-default btn-lg">I have a driver. Bring it on!</button> <!-- ABV 10.1-100% -->
-        <button type="button" class="btn btn-default btn-lg">No preference</button>
+        <button type="button" class="btn btn-default btn-med" id= "ABV1" class="selectionButtons">Low</button> <!-- ABV 0-5% -->
+        <button type="button" class="btn btn-default btn-med" id= "ABV2" class="selectionButtons">Low to Medium</button> <!-- ABV 5.1-7.4% -->
+        <button type="button" class="btn btn-default btn-med" id= "ABV3" class="selectionButtons">Medium to High.</button> <!-- ABV 7.5-10% -->
+        <button type="button" class="btn btn-default btn-med" id= "ABV4" class="selectionButtons">High</button> <!-- ABV 10.1-100% -->
+        <button type="button" class="btn btn-default btn-med" id= "ABV5" class="selectionButtons">No preference</button>
       
         <div class="row" id="cardsAppearHere"></div>
     </div> <!-- abv -->
+
+    <div class="zipCodeForm"> 
+        <form id="zipCode-form">
+            <label for="zipCode-input">Enter a Zip Code</label>
+            <input type="text" id="zipCode-input" value="12345"><br>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2 id="grainSectionFonts" id= "submitButton"></h2>
+        <button type="button" class="btn btn-default btn-lg">Submit</button>
+      
+        <div class="row" id="cardsAppearHere"></div>
+    </div> <!-- submit -->
 
 </div>
 

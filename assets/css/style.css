@@ -42,17 +42,23 @@ nav .brand-logo {
 #hopsSection {
   background-repeat: no-repeat;
   background-size: 100%;
-
 }
 
 #grainSection{
   background-repeat: no-repeat;
   background-size: 100%;
 }
- 
+
 #grainSectionFonts {
-  color: #fff
+  color: #fff;
+  font-size: 30px;
 }
+
+.zipCode {
+  background-color: #e17d1f;
+}
+.selectionButtons {
+  line-height: 480px;
 }
 /*sarah note-contact us form only*/
 input[type=text], input[type=email] { 
