@@ -1,6 +1,49 @@
 /*GALAXY GROUP PROJECT. OWNERS: Saidi, Christine and Nigel*/
 
-/*main color palate #e17d1f (orange) and #92a55e (green)
+/*main color palate #e17d1f (orange) and #92a55e (green)*/
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+    margin-top: 10px; /*sarah - added for bottle position*/
+
+}
+
+@media only screen and (min-width: 601px) {
+    .container {
+        width: 85%
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 70%
+    }
+}
+
+.container .row {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem
+}
+
+.cd-headline.type b {
+    visibility: hidden
+}
+
+.cd-headline.type b.is-visible {
+    visibility: visible
+}
+
+.cd-headline.type i {
+    position: absolute;
+    visibility: hidden
+}
+
+.cd-headline.type i.in {
+    position: relative;
+    visibility: visible
+}
+
 /*sarah note-find a new favorite bar button*/
 .btn-large {
 
@@ -93,6 +136,194 @@ input[type=text], input[type=email] {
    .input-field .prefix.active {
      color: white;
    }
+
 h1{
     color: white;
+}
+/*sarah note - header and footer*/
+.default_color {
+    background-color: #E17D1F !important
+}
+
+/* sarah note - cant find*/
+.default_color_text {
+    color: green !important
+}
+
+/*sarah note - can't find*/
+.icon-block {
+    padding: 0 15px;
+}
+
+/* sarah - cant find*/
+#intro,
+#work,
+#team {
+    padding-top: 4rem
+}
+
+/* sarah note - starts just below the find a new favorite beer button*/
+#index-banner {
+    min-height: 632px;
+    max-height: 864px;
+    position: relative;
+}
+
+/*sarah note - affects top bottle image/cartton in nav bar*/
+#nav_f {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important
+}
+
+/* sarah note - title header only - was at 100 for font weight*/
+.text_h {
+    padding: 15% 0;
+    font-size: 6.0em;
+    /*font-weight: 100;*/
+    font-weight: 300;
+    color: white
+}
+
+/* sarah note - can't find elements affected by this*/
+.brand-logo {
+    position: absolute;
+    color: red;
+    display: inline-block;
+    font-size: 2.1rem;
+    font-style: normal;
+    font-weight: 100;
+    padding: 0;
+    letter-spacing: 7px
+}
+
+/*sarah note - placement of header nav bar only*/
+.logo-navbar{
+    height: 3rem;
+    padding-right: .5rem
+}
+
+/* - sarah note - affects the "find your.." text above maps*/
+.text_h2 {
+    font-weight: 100;
+    margin-bottom: 4%;
+    line-height: 4.5rem;
+}
+/* - sarah note - affects the "...beer" text above maps*/
+.span_h2 {
+    font-weight: 300;
+    color: #E17D1F 
+}
+
+/* sarah note - Styles to search by, Our Favorites and The Team text*/
+.text_b {
+    color: #e17d1f
+}
+
+/*sarah note - cant find*/
+.in {
+    font-weight: 400 !important;
+    font-style: normal !important
+    color:blue;
+}
+
+/*sarah note - cant find*/
+.promo i {
+    color: #E17D1F ;
+    font-size: 7rem;
+    display: block
+}
+
+/*sarah note - for team picks*/
+.card-content a {
+    color: red 
+}
+
+/*sarah note - for team picks*/
+.card-content a:hover {
+    color: #E17D1F 
+}
+
+/*sarah note - cant find*/
+#work,
+#team {
+    background: rgb(247, 247, 247)
+}
+
+/*sarah note - can't find*/
+.text_pink {
+    color: red
+}
+
+/*sarah note nav bar lettering*/
+nav ul a {
+    font-size: 1.2rem;
+    color: #FFF;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: 300;
+    padding: 0px 15px
+}
+
+/*sarah note - cant find*/
+.cd-headline.type .cd-words-wrapper {
+    vertical-align: top;
+    overflow: hidden
+}
+
+/*sarah note - cant find*/
+.cd-headline.type .cd-words-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    bottom: auto;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    height: 90%;
+    width: 1px;
+    background-color: red;
+}
+
+.cd-headline.type .cd-words-wrapper.waiting::after {
+    -webkit-animation: cd-pulse 1s infinite;
+    -moz-animation: cd-pulse 1s infinite;
+    animation: cd-pulse 1s infinite
+}
+
+/*sarah note main title - flashing background*/
+.cd-headline.type .cd-words-wrapper.selected {
+    background-color: #FFF
+}
+
+.cd-headline.type .cd-words-wrapper.selected::after {
+    visibility: hidden
+}
+
+/*sarah note - main title - last word in flashing title*/
+.cd-headline.type .cd-words-wrapper.selected b {
+    color: #E17D1F
+}
+
+/*button styling*/
+.z-depth-1,
+nav,
+.card-panel,
+.card,
+.toast,
+.btn-large,
+.btn-floating,
+.dropdown-content,
+.collapsible,
+.side-nav {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+}
+
+.z-depth-1-half,
+.btn:hover,
+.btn-large:hover,
+.btn-floating:hover {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15)
 }
