@@ -1,5 +1,17 @@
 $(document).ready(function() {
 
+var config = {
+    apiKey: "AIzaSyBl1DC0XlwyV4UkPh0dyODExOW7zOA9RC0",
+    authDomain: "gallant-grapes-1484705431926.firebaseapp.com",
+    databaseURL: "https://gallant-grapes-1484705431926.firebaseio.com",
+    storageBucket: "gallant-grapes-1484705431926.appspot.com",
+    messagingSenderId: "605616569143"
+    };
+    firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+
   var color = "",
       hoppiness = "",
       abv = 0,
@@ -7,6 +19,12 @@ $(document).ready(function() {
       zipcode = 0,
       brewery = [], // holds all brewery info
       beer = [];
+
+
+
+  database.ref().push({
+      // variables to push to firebase
+    });
 
 // THIS CODE IS AT LINE 30
   // //whatever id is for user inputs
