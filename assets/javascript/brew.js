@@ -20,25 +20,6 @@ var config = {
     });
 
 
-// THIS CODE IS AT LINE 30
-  // //whatever id is for user inputs
-  // $("#userinput").on("click", function() {
-    
-  //   //adjust ids to what individual user inputs will be
-  //   color = $("#color-input").val().trim();
-  //   hoppiness = $("#hoppiness-input").val().trim();
-  //   abv = $("#abv-input").val().trim();
-  //   style = $("#style-input").val().trim();
-  //   zipcode = $("#zipcode-input").val().trim();
-
-  //   return false;
-
-  // });//end of on click for user input
-
-  //may not be document click...change class or id to whatever submit button is?
-  // $("#submitButton").on("click", function(){
-
-  // })
   $("#submitButton").on("click", function() { // changed id to #submit in the middle
     
     //adjust ids to what individual user inputs will be
