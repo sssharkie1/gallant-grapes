@@ -33,51 +33,58 @@
 
         <div class="container" id="hopsSection" style="background-image: url(assets/img/hops-background.png);width: 1000px" align="center">
 
-            <h1 class="text_h center header cd-headline letters type">
-                
-                <span>Find a local Brew</span>
-            </h1>
+        <h1 class="text_h center header cd-headline letters type">
+            
+            <span>Find a local </span>
+            <span class="cd-words-wrapper waiting">
+                <b class="is-visible">Brew</b>
+                <b>Brewery</b>
+                <b>Bar</b>
+               
+            </span>
+            
+        </h1>
         </div>
     </div>
 
     <div id="mission" align="text-center">
-        <h3 class="text-center">verbiage about site and vision "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</h3>
+        <h3 class="text-center">Where beer lovers can find beers they love with local breweries."</h3>
     </div>	
 
     <div id="selectBeers" style="background-image: url(assets/img/grains6.jpg)">
         <div class="container">
             <h2 id= "grainSectionFonts">Color</h2>
-            <button type="button" class="btn btn-default btn-med" id="colorButton1" class="selectionButtons">Light</button> <!-- SRM 0-13 -->
-            <button type="button" class="btn btn-default btn-med" id="colorButton2" class="selectionButtons">Medium</button> <!-- SRM 13-26 -->
-            <button type="button" class="btn btn-default btn-med" id="colorButton3" class="selectionButtons">Dark</button> <!-- SRM >=26 -->
-            <button type="button" class="btn btn-default btn-med" id="colorButton4" class="selectionButtons">No preference</button> 
+            <button type="button" class="btn btn-default btn-med colorButton" id="colorButton1" class="selectionButtons">Light</button> <!-- SRM 0-13 -->
+            <button type="button" class="btn btn-default btn-med colorButton" id="colorButton2" class="selectionButtons">Medium</button> <!-- SRM 13-26 -->
+            <button type="button" class="btn btn-default btn-med colorButton" id="colorButton3" class="selectionButtons">Dark</button> <!-- SRM >=26 -->
+            <button type="button" class="btn btn-default btn-med colorButton" id="colorButton4" class="selectionButtons">No preference</button> 
           
         </div> <!-- color -->
 
         <div class="container">
             <h2 id="grainSectionFonts">Hoppiness</h2>
-            <button type="button" class="btn btn-default btn-med" id="hoppinessButton1" class="selectionButtons">Not Hoppy</button> <!-- IBU 0-15 -->
-            <button type="button" class="btn btn-default btn-med" id="hoppinessButton2" class="selectionButtons">Kind of Hoppy</button> <!-- IBU 16-30 -->
-            <button type="button" class="btn btn-default btn-med" id="hoppinessButton3" class="selectionButtons">Hoppy</button> <!-- IBU 31-45 -->
-            <button type="button" class="btn btn-default btn-med" id="hoppinessButton4" class="selectionButtons">Very Hoppy</button> <!-- IBU <=46 -->
-            <button type="button" class="btn btn-default btn-med" id="hoppinessButton5" class="selectionButtons">No preference</button> 
+            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton1" class="selectionButtons">Not Hoppy</button> <!-- IBU 0-15 -->
+            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton2" class="selectionButtons">Kind of Hoppy</button> <!-- IBU 16-30 -->
+            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton3" class="selectionButtons">Hoppy</button> <!-- IBU 31-45 -->
+            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton4" class="selectionButtons">Very Hoppy</button> <!-- IBU <=46 -->
+            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton5" class="selectionButtons">No preference</button> 
           
         </div> <!-- hoppiness -->
 
         <div class="container">
             <h2 id="grainSectionFonts">ABV</h2>
-            <button type="button" class="btn btn-default btn-med" id= "ABV1" class="selectionButtons">Low</button> <!-- ABV 0-5% -->
-            <button type="button" class="btn btn-default btn-med" id= "ABV2" class="selectionButtons">Low to Medium</button> <!-- ABV 5.1-7.4% -->
-            <button type="button" class="btn btn-default btn-med" id= "ABV3" class="selectionButtons">Medium to High.</button> <!-- ABV 7.5-10% -->
-            <button type="button" class="btn btn-default btn-med" id= "ABV4" class="selectionButtons">High</button> <!-- ABV 10.1-100% -->
-            <button type="button" class="btn btn-default btn-med" id= "ABV5" class="selectionButtons">No preference</button>
+            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV1" class="selectionButtons">Low</button> <!-- ABV 0-5% -->
+            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV2" class="selectionButtons">Low to Medium</button> <!-- ABV 5.1-7.4% -->
+            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV3" class="selectionButtons">Medium to High.</button> <!-- ABV 7.5-10% -->
+            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV4" class="selectionButtons">High</button> <!-- ABV 10.1-100% -->
+            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV5" class="selectionButtons">No preference</button>
 
         </div> <!-- abv -->
 
         <div class="zipCodeForm"> 
             <form id="zipCode-form">
                 <label for="zipCode-input">
-                  <h2 id="grainSectionFonts">Enter a Zip Code</h2>
+                  <h2 id="grainSectionFonts">Enter a Zip Code *Required*</h2>
                 </label>
                 <input type="text" id="zipCode-input" value="12345"><br>
             </form>
@@ -95,7 +102,7 @@
         <div class="container">
             <h2 class="header text_b">Your Recommended Beers:</h2>
           
-            <div class="row" id="beersAppearHere"></div>
+            <div class="row" id="beerResults"></div>
         </div>
     </div>
 
