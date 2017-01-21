@@ -1,8 +1,12 @@
 
-/*main color palate #e17d1f (orange) and #92a55e (green)*/
+/*main color palate  (orange) and #92a55e (green)*/
 .btn-default{
   background: #e17d1f;
 
+}
+
+.mainContainer {
+  background: #e17d1f;
 }
 .container {
     margin: 0 auto;
@@ -224,6 +228,9 @@ h1{
     color: #e17d1f
 }
 
+#waves-effect waves-block waves-light{
+  max width: 400px;
+}
 /*sarah note - for team "co-founder"*/
 .card-content a {
     color: #e17d1f 
