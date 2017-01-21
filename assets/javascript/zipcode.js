@@ -6,13 +6,31 @@
       	// style = "",
       	zipcode = 0
 
-$("input:button").on("click", function() {
+    // Comparison Rangers
+    var srmMin = 0,
+    	srmMax = 100,
+    	ibuMin = 0,
+    	ibuMax = 100,
+    	abvMin = 0,
+    	abvMax = 100
 
-	var type = $(this).attr("id");
-	var selection = $(this).attr("minValue")
+$("button:button").on("click", function() {
 
-	console.log(type)
-	console.log(selection)
+	var type = $(this).attr("category"); // grabs category (srm, ibv, abv)
+	
+	// Set all ranges
+	if(type === "color"){ // probably not the best way to do this but i'm out of ideas 
+		srmMin = $(this).attr("colorMin");
+		srmMax = $(this).attr("colorMax");
+	}
+	else if(type === "ibu"){
+		ibuMin = $(this).attr("ibuMin");
+		ibuMax = $(this).attr("ibuMax");
+	}
+	else if(type === "abv"){
+		abvMin = $(this).attr("abvMin");
+		abvMax = $(this).attr("abvMax");
+	}
 
 })
 
