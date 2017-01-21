@@ -3,6 +3,20 @@ $(document).ready(function() {
 // Variables
 brewery = [], // holds all brewery info
 beer = [];
+var config = {
+    apiKey: "AIzaSyBl1DC0XlwyV4UkPh0dyODExOW7zOA9RC0",
+    authDomain: "gallant-grapes-1484705431926.firebaseapp.com",
+    databaseURL: "https://gallant-grapes-1484705431926.firebaseio.com",
+    storageBucket: "gallant-grapes-1484705431926.appspot.com",
+    messagingSenderId: "605616569143"
+    };
+    firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  database.ref().push({
+      // variables to push to firebase
+    });
 
 // THIS CODE IS AT LINE 30
   // //whatever id is for user inputs
@@ -19,7 +33,26 @@ beer = [];
 
   // });//end of on click for user input
 
-  
+  //may not be document click...change class or id to whatever submit button is?
+  $(document).on("click", "#submitButton", function() { // changed id to #submit in the middle
+    
+    //adjust ids to what individual user inputs will be
+    color = $(".colorButton").val().trim();
+    hoppiness = $(".hoppinessButton").val().trim();
+    abv = $(".ABVButton").val().trim();
+    // style = $("#style-input").val().trim();
+    zipcode = $("#zipCode-input").val().trim();
+
+    //clear input fields
+    $(".colorButton").val("");
+    $(".hoppinessButton").val("");
+    $(".ABVButton").val("");
+    // $("#style-input").val("");
+    $("#zipCode-input").val("");
+
+    //clear results div or however is displayed in html
+    $("#beerResults").empty();  
+        
     //URL based on zipcode input
     var queryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcode;
        

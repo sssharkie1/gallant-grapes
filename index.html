@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="assets/css/reset.css"> 
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 
 </head>
@@ -27,20 +27,28 @@
 
 <!--title div-->
 <body>
-<div class="section no-pad-bot" id="index-banner">
+<div class=mainContainer>
+    <div class="section no-pad-bot" id="index-banner">
 
 
-    <div class="container" id="hopsSection" style="background-image: url(assets/img/hops-background.png);width: 1000px" align="center">
+        <div class="container" id="hopsSection" style="background-image: url(assets/img/hops-background.png);width: 1000px" align="center">
 
         <h1 class="text_h center header cd-headline letters type">
             
-            <span>Find a local Brew</span>
+            <span>Find a local </span>
+            <span class="cd-words-wrapper waiting">
+                <b class="is-visible">Brew</b>
+                <b>Brewery</b>
+                <b>Bar</b>
+               
+            </span>
+            
         </h1>
+        </div>
     </div>
-</div>
 
     <div id="mission" align="text-center">
-        <h3 class="text-center">verbiage about site and vision "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</h3>
+        <h3 class="text-center">Where beer lovers can find beers they love with local breweries."</h3>
     </div>	
 
 <div id="selectBeers" style="background-image: url(assets/img/grains6.jpg)">
@@ -72,220 +80,221 @@
         <button type="button" abvMin="10.1" abvMax="100" category="abv" class="btn btn-default btn-med" id= "high" class="selectionButtons">High</button> <!-- ABV 10.1%+ -->
         <button type="button" abvMin="0" abvMax="100" category="abv" class="btn btn-default btn-med" id= "abvNone" class="selectionButtons">No preference</button>
 
-    </div> <!-- abv -->
 
-    <div class="zipCodeForm"> 
-        <form id="zipCode-form">
-            <label for="zipCode-input">
-              <h2 id="grainSectionFonts">Enter a Zip Code</h2>
-            </label>
-            <input type="number" id="zipCode-input" value="12345"><br> <!-- is value needed here? -->
-        </form>
+        </div> <!-- abv -->
+
+        <div class="zipCodeForm"> 
+            <form id="zipCode-form">
+                <label for="zipCode-input">
+                  <h2 id="grainSectionFonts">Enter a Zip Code *Required*</h2>
+                </label>
+                <input type="text" id="zipCode-input" value="12345"><br>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2 id="grainSectionFonts" id= "submitButton"></h2>
+            <button type="button" class="btn btn-default btn-med">Submit</button>
+          
+        </div> <!-- submit -->
+
     </div>
-
-    <div class="container">
-        <h2 id="grainSectionFonts" id= "submitButton"></h2>
-        <button type="button" class="btn btn-default btn-med">Submit</button>
-      
-    </div> <!-- submit -->
-
-</div>
     
-<div id="cards">
-    <div class="container">
-        <h2 class="header text_b">Your Recommended Beers:</h2>
-      
-        <div class="row" id="beersAppearHere"></div>
+    <div id="cards">
+        <div class="container">
+            <h2 class="header text_b">Your Recommended Beers:</h2>
+          
+            <div class="row" id="beerResults"></div>
+        </div>
     </div>
-</div>
 
-<!--map div-->
-<div id="yourMap">
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h2 class="center header text_h2"> FIND YOUR <span class="span_h2"> BREW </span></h2>
+    <!--map div-->
+    <div id="yourMap">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h2 class="center header text_h2"> FIND YOUR <span class="span_h2"> BREW </span></h2>
+                </div>
+                <div class="col s12 white darken-2" id="map">GOOGLE MAPS
+                </div>      
             </div>
+
             
     <div id="map"></div>
-    
 
-        </div>
-    </div>
-</div>
 
 <!-- FAVES-->
-<div id="inspiration">
-    <div class="container">
-        <h2 class="header text_b">Our Favorites of the Week</h2>
-        <div class="row">
-            
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Sarah's Pick<br/>
-                            <small><em><a class="red-text text-darken-1" href="#" style="background-image: url(assets/img/jade.png)""></a></em></small></span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Derek's Pick<br/>
-                            <small><em><a class="red-text text-darken-1"
-                                          href="#"></a></em></small>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Meredith's Pick<br/>
-                            <small><em><a class="red-text text-darken-1"
-                                          href="#"></a></em></small></span>
+    <div id="inspiration">
+        <div class="container">
+            <h2 class="header text_b">Our Favorites of the Week</h2>
+            <div class="row">
+                
+                <div class="col s12 m3">
+                    <div class="card card-avatar">
+                        <div class="waves-effect waves-block waves-light">
+                            <img class="activator" src="">
                         </div>
-                </div>
-            </div>
-
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="">
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Sarah's Pick<br/>
+                                <small><em><a class="red-text text-darken-1" src="assets/img/jade.png"></a></em></small></span>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Julie's Pick<br/>
-                            <small><em><a class="red-text text-darken-1"
-                                          href="#"></a></em></small></span>
+                </div>
+                
+                <div class="col s12 m3">
+                    <div class="card card-avatar">
+                        <div class="waves-effect waves-block waves-light">
+                            <img class="activator" src="">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Derek's Pick<br/>
+                                <small><em><a class="red-text text-darken-1"
+                                              href="#"></a></em></small>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col s12 m3">
+                    <div class="card card-avatar">
+                        <div class="waves-effect waves-block waves-light">
+                            <img class="activator" src="">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Meredith's Pick<br/>
+                                <small><em><a class="red-text text-darken-1"
+                                              href="#"></a></em></small></span>
+                            </div>
+                    </div>
+                </div>
 
+                <div class="col s12 m3">
+                    <div class="card card-avatar">
+                        <div class="waves-effect waves-block waves-light">
+                            <img class="activator" src="">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Julie's Pick<br/>
+                                <small><em><a class="red-text text-darken-1"
+                                              href="#"></a></em></small></span>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <!-- TEAM-->
-<div id="team">
-    <div class="container">
-        <h2 class="header text_b"> The TEAM</h2>
-        <div class="row">
-            
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="assets/img/avatar sarah.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Sarah<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Co-Founder</a></em></small></span>
-                        <p>
-                            
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/sarah-stevens-985b825?trk=hp-identity-name" target="_blank">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
+    <div id="team">
+        <div class="container">
+            <h2 class="header text_b"> The TEAM</h2>
+            <div class="row">
+                
+                <div class="col s12 m3">
+                    <div class="card card-avatar">
+                        <div class="waves-effect waves-block waves-light">
+                            <img class="activator" src="assets/img/avatar sarah.png">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Sarah<br/>
+                                <small><em><a class="red-text text-darken-1" href="#">Co-Founder</a></em></small></span>
+                            <p>
+                                
+                                <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/sarah-stevens-985b825?trk=hp-identity-name" target="_blank">
+                                    <i class="fa fa-linkedin-square"></i>
+                                </a>
 
-                            <a class="blue-text text-lighten-2" href="https://github.com/sssharkie1" target="_blank">
-                                <i class="fa fa-github-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="mailto:sarahalicestevens@gmail.com" target="_blank">
-                                <i class="fa fa-envelope-square"></i>
-                            </a>
+                                <a class="blue-text text-lighten-2" href="https://github.com/sssharkie1" target="_blank">
+                                    <i class="fa fa-github-square"></i>
+                                </a>
+                                <a class="blue-text text-lighten-2" href="mailto:sarahalicestevens@gmail.com" target="_blank">
+                                    <i class="fa fa-envelope-square"></i>
+                                </a>
 
-                        </p>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-           
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Derek<br/>
-                            <small><em><a class="red-text text-darken-1" href="#"> Co-Founder</a></em></small>
-                        </span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
+               
+                <div class="col s12 m3">
+                    <div class="card card-avatar">
+                        <div class="waves-effect waves-block waves-light">
+                            <img class="activator" src="">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Derek<br/>
+                                <small><em><a class="red-text text-darken-1" href="#"> Co-Founder</a></em></small>
+                            </span>
+                            <p>
+                                <a class="blue-text text-lighten-2" href="#">
+                                    <i class="fa fa-linkedin-square"></i>
+                                </a>
 
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-github-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-envelope-square"></i>
-                            </a>
-                        </p>
+                                <a class="blue-text text-lighten-2" href="#">
+                                    <i class="fa fa-github-square"></i>
+                                </a>
+                                <a class="blue-text text-lighten-2" href="#">
+                                    <i class="fa fa-envelope-square"></i>
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="assets/img/mer.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Meredith<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Co-Founder</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
+                
+                <div class="col s12 m3">
+                    <div class="card card-avatar">
+                        <div class="waves-effect waves-block waves-light">
+                            <img class="activator" src="assets/img/mer.png">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Meredith<br/>
+                                <small><em><a class="red-text text-darken-1" href="#">Co-Founder</a></em></small></span>
+                            <p>
+                                <a class="blue-text text-lighten-2" href="#">
+                                    <i class="fa fa-linkedin-square"></i>
+                                </a>
 
-                            <a class="blue-text text-lighten-2" href="https://github.com/erbium87">
-                                <i class="fa fa-github-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="mail to:mereditherb@gmail.com">
-                                <i class="fa fa-envelope-square"></i>
-                            </a>
+                                <a class="blue-text text-lighten-2" href="https://github.com/erbium87">
+                                    <i class="fa fa-github-square"></i>
+                                </a>
+                                <a class="blue-text text-lighten-2" href="mail to:mereditherb@gmail.com">
+                                    <i class="fa fa-envelope-square"></i>
+                                </a>
 
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Julie<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Co-Founder</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-github-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-envelope-square"></i>
-                            </a>
-                        </p>
+                            </p>
+                        </div>
                     </div>
                 </div>
+
+                <div class="col s12 m3">
+                    <div class="card card-avatar">
+                        <div class="waves-effect waves-block waves-light">
+                            <img class="activator" src="">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Julie<br/>
+                                <small><em><a class="red-text text-darken-1" href="#">Co-Founder</a></em></small></span>
+                            <p>
+                                <a class="blue-text text-lighten-2" href="#">
+                                    <i class="fa fa-linkedin-square"></i>
+                                </a>
+
+                                <a class="blue-text text-lighten-2" href="#">
+                                    <i class="fa fa-github-square"></i>
+                                </a>
+                                <a class="blue-text text-lighten-2" href="#">
+                                    <i class="fa fa-envelope-square"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            
         </div>
     </div>
 </div>
-
 
 <script src = "assets/javascript/zipcode.js"></script>
 <script src = "assets/javascript/brew.js"></script>
