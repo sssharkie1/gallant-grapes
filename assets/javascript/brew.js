@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 // Variables
 brewery = [], // holds all brewery info
 beer = [];
@@ -18,6 +19,7 @@ var config = {
       // variables to push to firebase
     });
 
+
 // THIS CODE IS AT LINE 30
   // //whatever id is for user inputs
   // $("#userinput").on("click", function() {
@@ -34,7 +36,10 @@ var config = {
   // });//end of on click for user input
 
   //may not be document click...change class or id to whatever submit button is?
-  $(document).on("click", "#submitButton", function() { // changed id to #submit in the middle
+  // $("#submitButton").on("click", function(){
+
+  // })
+  $("#submitButton").on("click", function() { // changed id to #submit in the middle
     
     //adjust ids to what individual user inputs will be
     color = $(".colorButton").val().trim();
@@ -42,11 +47,15 @@ var config = {
     abv = $(".ABVButton").val().trim();
     // style = $("#style-input").val().trim();
     zipcode = $("#zipCode-input").val().trim();
+    console.log(color);
+    console.log(hoppiness);
+    console.log(abv);
+    console.log("hey");
 
     //clear input fields
-    $(".colorButton").val("");
-    $(".hoppinessButton").val("");
-    $(".ABVButton").val("");
+    // $(".colorButton").val("");
+    // $(".hoppinessButton").val("");
+    // $(".ABVButton").val("");
     // $("#style-input").val("");
     $("#zipCode-input").val("");
 
@@ -56,8 +65,7 @@ var config = {
     //URL based on zipcode input
     var queryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcode;
        
-    // var queryBeerURL = "http://api.brewerydb.com/v2/beers/?key=9bb3bc076d572ad09b636ac87cc944c9&abv=";
-    //must we define all items we are searching for in url?
+    
 
     $.ajax({
       url: queryURL,
@@ -71,7 +79,8 @@ var config = {
 
       for (var i = 0; i < breweryResult.length; i++){ // for-loop to add all breweries into an array
 
-        breweryInfo = {"id" : breweryResult[i].brewery.id,
+        breweryInfo = {"id" : breweryResult[i].id,
+                      "id2" : breweryResult[i].brewery.id,
                       "name" : breweryResult[i].brewery.name, 
                       "streetName" : breweryResult[i].streetAddress,
                       "state" : breweryResult[i].region,
@@ -92,12 +101,11 @@ var config = {
         
 
         for (var i = 0; i < brewery.length; i++){ // for loop to make sure we go through all breweries
-          var beerDiv = $("<div class='beerOptions'>").append("Brewery #" + i + " - ID: " + brewery[i].id + "| Name: " + brewery[i].name + "<br>")
-          $("#beerResults").append(beerDiv);
+          var beerDiv = $("<div class='beerOptions'>").append("Brewery: " + brewery[i].name + "Address: " + brewery[i].streetName + " " + brewery[i].locality + brewery[i].state + "<br>")
+          // $("#beerResults").append(beerDiv);
 
           //URL for brewery based on queryURL to get beer at brewery to then search for other input
           var queryBreweryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/brewery/" + brewery[i].id + "/beers/?key=9bb3bc076d572ad09b636ac87cc944c9"
-          //MAY NOT NEED NOW! url for finding the beer information
 
 
          $.ajax({
@@ -108,10 +116,10 @@ var config = {
           // may need to rename response since have response up above -- i think it should be okay as response again
 
           var beerResult = response.data;
-          var length = beerResult.length;
-          console.log(length)
+          // var length = beerResult.length;
+          // console.log(length)
 
-          for (var j = 0; j < length; j++) {
+          for (var j = 0; j < beerResult.length; j++) {
 
           beerInfo = {"Name" : beerResult[j].style.name,
                       "ABV" : beerResult[j].style.abvMin,
@@ -125,7 +133,7 @@ var config = {
         
           //if statements here for user input meeting criteria or call a function
                
-          var p = $("<p>").append("Beer #" + j + " - ABV: " + beer[j].ABV + " Hoppiness: " + beer[j].Hoppiness + " Color: " + beer[j].Color + " Category " + beer[j].Category);
+          var p = $("<p>").append("Beer: " + " - ABV: " + beer[j].ABV + " Hoppiness: " + beer[j].Hoppiness + " Color: " + beer[j].Color + " Style " + beer[j].Category);
           console.log(beerDiv);
 
           beerDiv.append(p);
