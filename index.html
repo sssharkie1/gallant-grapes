@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="assets/css/reset.css"> 
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 
 </head>
@@ -51,33 +51,35 @@
         <h3 class="text-center">Where beer lovers can find beers they love with local breweries."</h3>
     </div>	
 
-    <div id="selectBeers" style="background-image: url(assets/img/grains6.jpg)">
-        <div class="container">
-            <h2 id= "grainSectionFonts">Color</h2>
-            <button type="button" class="btn btn-default btn-med colorButton" id="colorButton1" class="selectionButtons">Light</button> <!-- SRM 0-13 -->
-            <button type="button" class="btn btn-default btn-med colorButton" id="colorButton2" class="selectionButtons">Medium</button> <!-- SRM 13-26 -->
-            <button type="button" class="btn btn-default btn-med colorButton" id="colorButton3" class="selectionButtons">Dark</button> <!-- SRM >=26 -->
-            <button type="button" class="btn btn-default btn-med colorButton" id="colorButton4" class="selectionButtons">No preference</button> 
-          
-        </div> <!-- color -->
+<div id="selectBeers" style="background-image: url(assets/img/grains6.jpg)">
+    <div class="container">
+        <h2 id="grainSectionFonts">Color</h2>
+        <button type="button" colorMin="0" colorMax="10" category="color" class="btn btn-default btn-med" id="light" class="selectionButtons">Very Light</button> <!-- SRM 0-10 -->
+        <button type="button" colorMin="11" colorMax="20" category="color" class="btn btn-default btn-med" id="lightmed" class="selectionButtons">Light-Medium</button> <!-- SRM 11-20 -->
+        <button type="button" colorMin="21" colorMax="30" category="color" class="btn btn-default btn-med" id="meddark" class="selectionButtons">Medium-Dark</button> <!-- SRM 21-30 -->
+        <button type="button" colorMin="31" colorMax="100" category="color" class="btn btn-default btn-med" id="dark" class="selectionButtons">Dark</button> <!-- SRM 31+ -->
+        <button type="button" colorMin="0" colorMax="100" category="color" class="btn btn-default btn-med" id="colorNone" class="selectionButtons">No preference</button> 
+      
+    </div> <!-- color -->
 
-        <div class="container">
-            <h2 id="grainSectionFonts">Hoppiness</h2>
-            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton1" class="selectionButtons">Not Hoppy</button> <!-- IBU 0-15 -->
-            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton2" class="selectionButtons">Kind of Hoppy</button> <!-- IBU 16-30 -->
-            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton3" class="selectionButtons">Hoppy</button> <!-- IBU 31-45 -->
-            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton4" class="selectionButtons">Very Hoppy</button> <!-- IBU <=46 -->
-            <button type="button" class="btn btn-default btn-med hoppinessButton" id="hoppinessButton5" class="selectionButtons">No preference</button> 
-          
-        </div> <!-- hoppiness -->
+    <div class="container">
+        <h2 id="grainSectionFonts">Hoppiness</h2>
+        <button type="button" ibuMin="0" ibuMax="15" category="ibu" class="btn btn-default btn-med" id="notHoppy" class="selectionButtons">Not Hoppy</button> <!-- IBU 0-15 -->
+        <button type="button" ibuMin="16" ibuMax="30" category="ibu" class="brn btn-default btn-med" id="kindaHoppy" class="selectionButtons">Kind of Hoppy</button> <!-- IBU 16-30 -->
+        <button type="button" ibuMin="31" ibuMax="45" category="ibu" class="btn btn-default btn-med" id="hoppy" class="selectionButtons">Hoppy</button> <!-- IBU 31-45 -->
+        <button type="button" ibuMin="46" ibuMax="100" category="ibu" class="btn btn-default btn-med" id="veryHoppy" class="selectionButtons">Very Hoppy</button> <!-- IBU <=46 -->
+        <button type="button" ibuMin="0" ibuMax="100" category="ibu" class="btn btn-default btn-med" id="hoppyNone" class="selectionButtons">No preference</button> 
+      
+    </div> <!-- hoppiness -->
 
-        <div class="container">
-            <h2 id="grainSectionFonts">ABV</h2>
-            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV1" class="selectionButtons">Low</button> <!-- ABV 0-5% -->
-            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV2" class="selectionButtons">Low to Medium</button> <!-- ABV 5.1-7.4% -->
-            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV3" class="selectionButtons">Medium to High.</button> <!-- ABV 7.5-10% -->
-            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV4" class="selectionButtons">High</button> <!-- ABV 10.1-100% -->
-            <button type="button" class="btn btn-default btn-med ABVButton" id= "ABV5" class="selectionButtons">No preference</button>
+    <div class="container">
+        <h2 id="grainSectionFonts">ABV</h2>
+        <button type="button" abvMin="0" abvMax="5" category="abv" class="btn btn-default btn-med" id="low" class="selectionButtons">Low</button> <!-- ABV 0-5% -->
+        <button type="button" abvMin="5.1" abvMax="7.4" category="abv" class="btn btn-default btn-med" id= "lowmed" class="selectionButtons">Low to Medium</button> <!-- ABV 5.1-7.4% -->
+        <button type="button" abvMin="7.5" abvMax="10" category="abv" class="btn btn-default btn-med" id= "medhigh" class="selectionButtons">Medium to High</button> <!-- ABV 7.5-10% -->
+        <button type="button" abvMin="10.1" abvMax="100" category="abv" class="btn btn-default btn-med" id= "high" class="selectionButtons">High</button> <!-- ABV 10.1%+ -->
+        <button type="button" abvMin="0" abvMax="100" category="abv" class="btn btn-default btn-med" id= "abvNone" class="selectionButtons">No preference</button>
+
 
         </div> <!-- abv -->
 
@@ -116,8 +118,10 @@
                 <div class="col s12 white darken-2" id="map">GOOGLE MAPS
                 </div>      
             </div>
-        </div>
-    </div>
+
+            
+    <div id="map"></div>
+
 
 <!-- FAVES-->
     <div id="inspiration">
@@ -292,6 +296,12 @@
     </div>
 </div>
 
+<script src = "assets/javascript/zipcode.js"></script>
 <script src = "assets/javascript/brew.js"></script>
+    <!-- <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl1DC0XlwyV4UkPh0dyODExOW7zOA9RC0&callback=initMap">
+    </script> -->
+<!-- <script src = "assets/javascript/maps.js"></script>
+ -->
 </body>
 </html>

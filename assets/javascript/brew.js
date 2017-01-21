@@ -1,11 +1,24 @@
 $(document).ready(function() {
-  var color = "",
-      hoppiness = "",
-      abv = 0,
-      // style = "",
-      zipcode = 0,
-      brewery = [], // holds all brewery info
-      beer = [];
+
+
+// Variables
+brewery = [], // holds all brewery info
+beer = [];
+var config = {
+    apiKey: "AIzaSyBl1DC0XlwyV4UkPh0dyODExOW7zOA9RC0",
+    authDomain: "gallant-grapes-1484705431926.firebaseapp.com",
+    databaseURL: "https://gallant-grapes-1484705431926.firebaseio.com",
+    storageBucket: "gallant-grapes-1484705431926.appspot.com",
+    messagingSenderId: "605616569143"
+    };
+    firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  database.ref().push({
+      // variables to push to firebase
+    });
+
 
 // THIS CODE IS AT LINE 30
   // //whatever id is for user inputs
@@ -133,7 +146,6 @@ $(document).ready(function() {
 
     return false;
 
-  });//end of on click for results probably not right because this was used on giphy.
 
 
 
