@@ -45,31 +45,32 @@
 
 <div id="selectBeers" style="background-image: url(assets/img/grains6.jpg)">
     <div class="container">
-        <h2 id= "grainSectionFonts">Color</h2>
-        <button type="button" class="btn btn-default btn-med" id="colorButton1" class="selectionButtons">Light</button> <!-- SRM 0-13 -->
-        <button type="button" class="btn btn-default btn-med" id="colorButton2" class="selectionButtons">Medium</button> <!-- SRM 13-26 -->
-        <button type="button" class="btn btn-default btn-med" id="colorButton3" class="selectionButtons">Dark</button> <!-- SRM >=26 -->
-        <button type="button" class="btn btn-default btn-med" id="colorButton4" class="selectionButtons">No preference</button> 
+        <h2 id="grainSectionFonts">Color</h2>
+        <button type="button" colorMin="0" colorMax="10" class="color btn btn-default btn-med" id="colorButton1" class="selectionButtons">Very Light</button> <!-- SRM 0-10 -->
+        <button type="button" colorMin="11" colorMax="20" class="color btn btn-default btn-med" id="colorButton2" class="selectionButtons">Light to Medium</button> <!-- SRM 11-20 -->
+        <button type="button" colorMin="21" colorMax="30" class="color btn btn-default btn-med" id="colorButton3" class="selectionButtons">Medium-Dark</button> <!-- SRM 21-30 -->
+        <button type="button" colorMin="31" colorMax="100" class="color btn btn-default btn-med" id="colorButton4" class="selectionButtons">Dark</button> <!-- SRM 31+ -->
+        <button type="button" colorMin="0" colorMax="100" class="color btn btn-default btn-med" id="colorButton5" class="selectionButtons">No preference</button> 
       
     </div> <!-- color -->
 
     <div class="container">
         <h2 id="grainSectionFonts">Hoppiness</h2>
-        <button type="button" class="btn btn-default btn-med" id="hoppinessButton1" class="selectionButtons">Not Hoppy</button> <!-- IBU 0-15 -->
-        <button type="button" class="btn btn-default btn-med" id="hoppinessButton2" class="selectionButtons">Kind of Hoppy</button> <!-- IBU 16-30 -->
-        <button type="button" class="btn btn-default btn-med" id="hoppinessButton3" class="selectionButtons">Hoppy</button> <!-- IBU 31-45 -->
-        <button type="button" class="btn btn-default btn-med" id="hoppinessButton4" class="selectionButtons">Very Hoppy</button> <!-- IBU <=46 -->
-        <button type="button" class="btn btn-default btn-med" id="hoppinessButton5" class="selectionButtons">No preference</button> 
+        <button type="button" ibuMin="0" ibuMax="15" class="hoppiness btn btn-default btn-med" id="hoppinessButton1" class="selectionButtons">Not Hoppy</button> <!-- IBU 0-15 -->
+        <button type="button" ibuMin="16" ibuMax="30" class="hoppinessbtn btn-default btn-med" id="hoppinessButton2" class="selectionButtons">Kind of Hoppy</button> <!-- IBU 16-30 -->
+        <button type="button" ibuMin="31" ibuMax="45" class="hoppiness  btn btn-default btn-med" id="hoppinessButton3" class="selectionButtons">Hoppy</button> <!-- IBU 31-45 -->
+        <button type="button" ibuMin="46" ibuMax="100" class="hoppiness btn btn-default btn-med" id="hoppinessButton4" class="selectionButtons">Very Hoppy</button> <!-- IBU <=46 -->
+        <button type="button" ibuMin="0" ibuMax="100" class="hoppiness btn btn-default btn-med" id="hoppinessButton5" class="selectionButtons">No preference</button> 
       
     </div> <!-- hoppiness -->
 
     <div class="container">
         <h2 id="grainSectionFonts">ABV</h2>
-        <button type="button" class="btn btn-default btn-med" id= "ABV1" class="selectionButtons">Low</button> <!-- ABV 0-5% -->
-        <button type="button" class="btn btn-default btn-med" id= "ABV2" class="selectionButtons">Low to Medium</button> <!-- ABV 5.1-7.4% -->
-        <button type="button" class="btn btn-default btn-med" id= "ABV3" class="selectionButtons">Medium to High.</button> <!-- ABV 7.5-10% -->
-        <button type="button" class="btn btn-default btn-med" id= "ABV4" class="selectionButtons">High</button> <!-- ABV 10.1-100% -->
-        <button type="button" class="btn btn-default btn-med" id= "ABV5" class="selectionButtons">No preference</button>
+        <button type="button" abvMin="0" abvMax="5" class="btn btn-default btn-med" id= "ABV1" class="selectionButtons">Low</button> <!-- ABV 0-5% -->
+        <button type="button" abvMin="5.1" abvMax="7.4" class="btn btn-default btn-med" id= "ABV2" class="selectionButtons">Low to Medium</button> <!-- ABV 5.1-7.4% -->
+        <button type="button" abvMin="7.5" abvMax="10" class="btn btn-default btn-med" id= "ABV3" class="selectionButtons">Medium to High.</button> <!-- ABV 7.5-10% -->
+        <button type="button" abvMin="10.1" abvMax="100" class="btn btn-default btn-med" id= "ABV4" class="selectionButtons">High</button> <!-- ABV 10.1%+ -->
+        <button type="button" abvMin="0" abvMax="100" class="btn btn-default btn-med" id= "ABV5" class="selectionButtons">No preference</button>
 
     </div> <!-- abv -->
 
@@ -78,7 +79,7 @@
             <label for="zipCode-input">
               <h2 id="grainSectionFonts">Enter a Zip Code</h2>
             </label>
-            <input type="text" id="zipCode-input" value="12345"><br>
+            <input type="number" id="zipCode-input" value="12345"><br> <!-- is value needed here? -->
         </form>
     </div>
 

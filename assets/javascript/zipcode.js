@@ -6,6 +6,15 @@
       	// style = "",
       	zipcode = 0
 
+$("input:button").on("click", function() {
+
+	var type = $(this).attr("id");
+	var selection = $(this).attr("minValue")
+
+	console.log(type)
+	console.log(selection)
+
+})
 
 $(document).on("click", "#submitButton", function() { // changed id to #submit in the middle
 	//adjust ids to what individual user inputs will be
