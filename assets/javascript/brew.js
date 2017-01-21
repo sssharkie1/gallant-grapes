@@ -3,8 +3,8 @@ $(document).ready(function() {
   var color = "",
       hoppiness = "",
       abv = 0,
-      style = "",
-      zipcode = 27613,
+      // style = "",
+      zipcode = 0,
       brewery = [], // holds all brewery info
       beer = [];
 
@@ -24,24 +24,24 @@ $(document).ready(function() {
   // });//end of on click for user input
 
   //may not be document click...change class or id to whatever submit button is?
-  $(document).on("click", "#submit", function() { // changed id to #submit in the middle
+  $(document).on("click", "#submitButton", function() { // changed id to #submit in the middle
     
     //adjust ids to what individual user inputs will be
-    color = $("#color-input").val().trim();
-    hoppiness = $("#hoppiness-input").val().trim();
-    abv = $("#abv-input").val().trim();
-    style = $("#style-input").val().trim();
-    zipcode = $("#zipcode-input").val().trim();
+    color = $(".colorButton").val().trim();
+    hoppiness = $(".hoppinessButton").val().trim();
+    abv = $(".ABVButton").val().trim();
+    // style = $("#style-input").val().trim();
+    zipcode = $("#zipCode-input").val().trim();
 
     //clear input fields
-    $("#color-input").val("");
-    $("#hoppiness-input").val("");
-    $("#abv-input").val("");
-    $("#style-input").val("");
-    $("#zipcode-input").val("");
+    $(".colorButton").val("");
+    $(".hoppinessButton").val("");
+    $(".ABVButton").val("");
+    // $("#style-input").val("");
+    $("#zipCode-input").val("");
 
     //clear results div or however is displayed in html
-    $("#areaForResults").empty();  
+    $("#beerResults").empty();  
         
     //URL based on zipcode input
     var queryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcode;
