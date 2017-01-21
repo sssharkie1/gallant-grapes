@@ -1,5 +1,14 @@
 
 /*main color palate #e17d1f (orange) and #92a55e (green)*/
+
+#nav-f {
+  position: fixed;
+}
+#mainContainer {
+  color: #fff;
+  background: #e17d1f;
+}
+
 .btn-default{
   background: #e17d1f;
 
@@ -11,17 +20,16 @@
     margin-top: 5px; /*sarah - added for bottle position*/
 }
 
+#mission {
+  background: #92a55e;
+  padding:20px; 
+}
+
 .btn:hover,
 .btn-large:hover {
     background-color: #92a55e
 }
 
-#mission {
-  color: #fff;
-  max-width: 1080px;
-  margin-left: 50px;
-  background: #e17d1f;
-}
 #navLinks {
   float: right;
 }
@@ -49,6 +57,10 @@
     visibility: visible
 }
 
+#inspiration {
+  background: #92a55e;
+  padding-bottom: 30px;
+}
 /*sarah note-find a new favorite bar button*/
 .btn-large {
 
@@ -58,6 +70,9 @@
   background: #E17D1F;
 }
 
+#inspirationHeader {
+  color: #fff;
+}
 #missionStatement{
   background: #92a55e;
   color: #fff;
