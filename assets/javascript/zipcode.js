@@ -1,12 +1,13 @@
 // Variables
-	// User Input
+	// User Input <--- are these necessary? (other than zipcode)
 	var color = "",
       	hoppiness = "",
       	abv = 0,
       	// style = "",
-      	zipcode = 0
+      	zipcode = 0,
+      	zipcodeArr = [];
 
-    // Comparison Rangers
+    // User selected ranges
     var srmMin = 0,
     	srmMax = 100,
     	ibuMin = 0,
@@ -14,12 +15,13 @@
     	abvMin = 0,
     	abvMax = 100
 
+// Sets comparison range to whatever user clicks on
 $("button:button").on("click", function() {
 
 	var type = $(this).attr("category"); // grabs category (srm, ibv, abv)
 	
 	// Set all ranges
-	if(type === "color"){ // probably not the best way to do this but i'm out of ideas 
+	if(type === "color"){ // if-statement is probably not the best way to do this but i'm out of ideas 
 		srmMin = $(this).attr("colorMin");
 		srmMax = $(this).attr("colorMax");
 	}
@@ -32,44 +34,25 @@ $("button:button").on("click", function() {
 		abvMax = $(this).attr("abvMax");
 	}
 
-})
-
-$(document).on("click", "#submitButton", function() { // changed id to #submit in the middle
-	//adjust ids to what individual user inputs will be
-    color = $(".colorButton").val().trim();
-    hoppiness = $(".hoppinessButton").val().trim();
-    abv = $(".ABVButton").val().trim();
-    // style = $("#style-input").val().trim();
-    zipcode = $("#zipCode-input").val().trim();
-
-    //clear input fields
-    $(".colorButton").val("");
-    $(".hoppinessButton").val("");
-    $(".ABVButton").val("");
-    // $("#style-input").val("");
-    $("#zipCode-input").val("");
-
-    //clear results div or however is displayed in html
-    $("#beerResults").empty(); 
-
-});//end of on click for results probably not right because this was used on giphy.
+}) // end on-click for buttons
 
 
 
-var zipcode = 27613;
-var radius = 10
+function zipCode() { // Purpose: add array of zip codes from zipcodeAPI database to "zipcodeArr"
 
-var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/b345qo4ak2sZAlNimGscHnkFGVUMDlRPpWVQlZ0F1sFBOsUa9mnQKHwqDrcgM45c/radius.json/" + zipcode + "/5/mile?minimal"
+	var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/b345qo4ak2sZAlNimGscHnkFGVUMDlRPpWVQlZ0F1sFBOsUa9mnQKHwqDrcgM45c/radius.json/" + zipcode + "/5/mile?minimal"
 
-$.ajax({
-	url: zipcodeURL,
-	method: "GET",
-	headers: { "X-Requested-With": "" } 
-}).done(function(response){
+	$.ajax({
+		url: zipcodeURL,
+		method: "GET",
+		headers: { "X-Requested-With": "" } 
+	}).done(function(response){
 
-		var zipCodes = response.zip_codes;
-		console.log(zipCodes)
-		// Stuff in here
-	})
+			zipcodeArr = response.zip_codes;
+
+		}) // end of function(response)
+
+} // end of function zipCode
+
 
 
