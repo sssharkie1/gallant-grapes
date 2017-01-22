@@ -1,9 +1,16 @@
 $(document).ready(function() {
 
-
 // Variables
-brewery = [], // holds all brewery info
-beer = []; // holds all beer info
+var brewery = [], // holds all brewery info
+    beer = []; // holds all beer info
+
+// User selected ranges
+var srmMin = 0,
+    srmMax = 100,
+    ibuMin = 0,
+    ibuMax = 100,
+    abvMin = 0,
+    abvMax = 100
 
 // Firebase
 var config = {
@@ -23,43 +30,8 @@ database.ref().push({
 
 
 // Functions
-function grabBrew() { // Purpose: Add all breweries from all zip codes to brewery array
-
-  for (var j = 0; j < zipcodeArr.length; j++){ // for-loop to run through all zip codes in 5 mi radius
-
-    //URL based on zipcode input
-    var queryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcodeArr[j];
-       
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-      headers: { "X-Requested-With": "" }
-    }).done(function(response){
-
-      var breweryResult = response.data; // array with brewery info as objects
-
-      for (var i = 0; i < breweryResult.length; i++){ // for-loop to add all breweries from 1 zip code into array
-
-        breweryInfo = {"id" : breweryResult[i].id,
-                      "id2" : breweryResult[i].brewery.id,
-                      "name" : breweryResult[i].brewery.name,
-                      "latitude" : breweryResult[i].latitude,
-                      "longitude" : breweryResult[i].longitude,
-                      "streetName" : breweryResult[i].streetAddress,
-                      "state" : breweryResult[i].region,
-                      "locality": breweryResult[i].locality 
-                      } //end of breweryInfo object
-
-        brewery.push(breweryInfo); // pushes current brewery's entire info (stored as object) into array
-
-      } //end of for-loop to add breweries
-    })//end of function(response)
-  } //end of for-loop zipcodeArr
-
-} // end function grabBrew()
-    
-
 function grabBeer() { 
+
   for (var i = 0; i < brewery.length; i++){ // for-loop to make sure we go through all breweries in array
     
     var beerDiv = $("<div class='beerOptions'>").append("Brewery: " + brewery[i].name + "Address: " + brewery[i].streetName + " " + brewery[i].locality + brewery[i].state + "<br>")
@@ -73,54 +45,109 @@ function grabBeer() {
       headers: { "X-Requested-With": "" }
     }).done(function(response){
 
-    var beerResult = response.data;
+      if(response.hasOwnProperty("data")){ // makes sure brewery HAS beers available
 
-    for (var j = 0; j < beerResult.length; j++) { // for-loop to add all beers from 1 brewery
+        var beerResult = response.data;
 
-      beerInfo = {"Name" : beerResult[j].style.name,
-                  "ABV" : beerResult[j].style.abvMax,
-                  "Hoppiness" : beerResult[j].style.ibuMin,
-                  "Color" : beerResult[j].style.srmMin,
-                  // "Category" : beerResult[j].style.category.name, <--- if using
-                  "Description" : beerResult[j].style.description
-                  }//end of beerInfo object
-                      
-      beer.push(beerInfo);
-        
-      //if statements here for user input meeting criteria or call a function ***** TO-DO *****
-               
-      var p = $("<p>").append("Beer: " + " - ABV: " + beer[j].ABV + " Hoppiness: " + beer[j].Hoppiness + " Color: " + beer[j].Color + " Style " + beer[j].Category);
-          console.log(beerDiv);
+        for (var j = 0; j < beerResult.length; j++) { // for-loop to add all beers from 1 brewery
 
-      beerDiv.append(p);
-      $("#beerResults").append(beerDiv);
+          beerInfo = {"Name" : beerResult[j].style.name,
+                      "ABV" : beerResult[j].style.abvMax,
+                      "Hoppiness" : beerResult[j].style.ibuMin,
+                      "Color" : beerResult[j].style.srmMin,
+                      // "Category" : beerResult[j].style.category.name, <--- if using
+                      "Description" : beerResult[j].style.description
+                      }//end of beerInfo object
+                          
+          beer.push(beerInfo);
+          console.log(beer)
+            
+          //if statements here for user input meeting criteria or call a function ***** TO-DO *****
+                   
+          var p = $("<p>").append("Beer: " + " - ABV: " + beer[j].ABV + " Hoppiness: " + beer[j].Hoppiness + " Color: " + beer[j].Color + " Style " + beer[j].Category);
+          
+          beerDiv.append(p);
+          $("#beerResults").append(beerDiv);
 
-    }//end of for loop for beerResult
+          
+        }//end of for loop for beerResult
+      } // end of if statement
     }) // end of function(response)
   } // end of for-loop
+  console.log(beer)
+};//end of grabBeer
 
-};//end of beerFunction
+
+function grabBrew() { // Purpose: Add all breweries from all zip codes to brewery array
+
+  for (var j = 0; j < zipcodeArr.length; j++){ // for-loop to run through all zip codes in 5 mi radius
+    //URL based on zipcode input
+    var queryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcodeArr[j];
+       
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      headers: { "X-Requested-With": "" }
+    }).done(function(response){
+
+      if(response.hasOwnProperty("data")){ // makes sure zip code HAS breweries available
+
+        var breweryResult = response.data; // array with brewery info as objects
+
+        for (var i = 0; i < breweryResult.length; i++){ // for-loop to add all breweries from 1 zip code into array
+
+          breweryInfo = {"id" : breweryResult[i].brewery.id,
+                        "name" : breweryResult[i].brewery.name,
+                        "latitude" : breweryResult[i].latitude,
+                        "longitude" : breweryResult[i].longitude,
+                        "streetName" : breweryResult[i].streetAddress,
+                        "state" : breweryResult[i].region,
+                        "locality": breweryResult[i].locality 
+                        } //end of breweryInfo object
+
+          brewery.push(breweryInfo); // pushes current brewery's entire info (stored as object) into array
+        }   // end of for loop to add breweries    
+      } //end of if statement
+    })//end of function(response)
+
+  } //end of for-loop zipcodeArr
+} // end function grabBrew()
+    
 
 
 
-// Code to run
 
-$(document).on("click", "#submitButton", function() { // changed id to #submit in the middle
 
-  // Zip Code
-    zipcode = $("#zipCode-input").val().trim(); // sets "zipcode" to user input ******** need validation ********
-    $("#zipCode-input").val(""); // clears zip code field
+// Code to execute
+
+$("button:button").on("click", function() { // sets user selected ranges based on which button clicked
+
+  var type = $(this).attr("category"); // grabs category (srm, ibv, abv)
+  
+  // Set all ranges
+  if(type === "color"){ // if-statement is probably not the best way to do this but i'm out of ideas 
+    srmMin = $(this).attr("colorMin");
+    srmMax = $(this).attr("colorMax");
+  }
+  else if(type === "ibu"){
+    ibuMin = $(this).attr("ibuMin");
+    ibuMax = $(this).attr("ibuMax");
+  }
+  else if(type === "abv"){
+    abvMin = $(this).attr("abvMin");
+    abvMax = $(this).attr("abvMax");
+  }
+
+}) // end on-click for buttons
+
+
+$(document).on("click", "#submitButton", function() { // runs everything else
 
     //clear results div or however is displayed in html
     // $("#beerResults").empty(); --> commented this out for now until we need it
 
-    zipCode();
     grabBrew();
     grabBeer();
-
-
-
-
     return false;
 
 });//end of on click for results probably not right because this was used on giphy.
