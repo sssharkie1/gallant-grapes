@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="assets/css/reset.css"> 
+
+	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="radio">
+  <input id="color" type="button" name="light" minValue="0" maxValue="25">
+  <label for="color">Light</label>
+</div>
+
+<div id="userinput">
+    <form id="form-id">
+        <div class="form-group">
+          <label for="name">Color</label>
+          <input class="form-control" id="color-input" type="text">
+        </div>
+        <div class="form-group">
+          <label for="destination">Hoppiness</label>
+          <input class="form-control" id="hoppiness-input" type="text">
+        </div>
+        <div class="form-group">
+          <label for="time">ABV</label>
+          <input class="form-control" id="abv-input" type="text">
+        </div>
+        <div class="form-group">
+          <label for="freq">Style</label>
+          <input class="form-control" id="style-input" type="number">
+        </div>
+        <div class="form-group">
+          <label for="freq">Zip Code</label>
+          <input class="form-control" id="zipcode-input" type="number">
+        </div>
+        <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+    </form>
+</div>
+
+<div id="areaForResults"></div>
+<div id="beerResults"></div>
+
+
+
+<script src = "assets/javascript/zipcode.js"></script>
+<script src = "assets/javascript/brew.js"></script>
+</body>
+</html>
