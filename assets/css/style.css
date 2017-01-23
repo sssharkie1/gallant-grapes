@@ -15,6 +15,20 @@
     margin-top: 5px; /*sarah - added for bottle position*/
 }
 
+#yourMap {
+  background: #fff;
+
+}
+.hopsDiv {
+    margin-top: 50px;
+  padding-top: 100px;
+}
+#hopsSection {
+  background-repeat: no-repeat;
+
+}
+
+
 .btn:hover,
 .btn-large:hover {
     background-color: #92a55e
@@ -70,7 +84,7 @@
 #map {
 
 	width: 100%;
-  height: 400px;
+  height: 200px;
 }
 
 /*sarah note-cant find on page*/
@@ -91,26 +105,28 @@ nav .brand-logo {
 
 }
 /*sarah note-for hops-background image*/
-#hopsSection {
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
 
 #selectBeers{
   background-repeat: no-repeat;
   background-size: 100%;
+  padding: 80px;
 }
 
 #grainSectionFonts {
   color: #fff;
-  font-size: 30px;
+  font-size: 18px;
 }
 
-.zipCode {
+#zipRequired {
+  color: #e17d1f;
+}
+.zipCodeForm{
+    margin-left: 70px;
+}
+#zipCode-input {
   background-color: #e17d1f;
 }
 .selectionButtons {
-  line-height: 480px;
   background: #e17d1f;
 }
 /*sarah note-contact us form only*/
@@ -170,6 +186,7 @@ h1{
 #work,
 #team {
     padding-top: 4rem
+    background: #C2C1C0;
 }
 
 #zipCode-form {
@@ -216,6 +233,7 @@ h1{
     font-weight: 100;
     margin-bottom: 4%;
     line-height: 4.5rem;
+    color: #fff;
 }
 /* - sarah note - affects the "...beer" text above maps*/
 .span_h2 {
@@ -228,12 +246,24 @@ h1{
     color: #e17d1f
 }
 
+.teamFavs {
+  color: #fff;
+}
+.recommendedBeers {
+  color: #fff;
+}
+
 #waves-effect waves-block waves-light{
   max width: 400px;
 }
 /*sarah note - for team "co-founder"*/
+
+.card-content {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
 .card-content a {
-    color: #e17d1f 
+    color: #e17d1f
 }
 
 /*sarah note - for team picks*/

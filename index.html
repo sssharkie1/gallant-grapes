@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Find-A-Brew-Part2</title>
-	<link rel="stylesheet" href="assets/css/reset.css"> 
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+    <title>Find-A-Brew-Part2</title>
+    <link rel="stylesheet" href="assets/css/reset.css"> 
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
-	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 
 </head>
 
 <div class="navbar-fixed">
-    <nav id="nav_f" class="default_color" role="navigation">
+    <nav id="nav_f" class="default_color navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="#" id="logo-container" class="brand-logo"><img class="logo-navbar" id="bottle" src="assets/img/bars.png">Find-a-Brew</a>
@@ -28,9 +30,10 @@
 <!--title div-->
 <body>
 <div class=mainContainer>
-    <div class="section no-pad-bot" id="index-banner">
+    <div class="hopsDiv" id="index-banner">
 
         <div class="container" id="hopsSection" style="background-image: url(assets/img/hops-background.png);width: 1000px" align="center">
+
 
         <h1 class="text_h center header cd-headline letters type">
             
@@ -48,7 +51,8 @@
 
     <div id="mission" align="text-center">
         <h3 class="text-center">Where beer lovers can find beers they love with local breweries."</h3>
-    </div>	
+    </div>  
+
 
     <div id="enterZip" style="background-image: url(assets/img/grains6.jpg)">
         <div class="zipCodeForm"> 
@@ -59,6 +63,7 @@
                 <input type="number" id="zipCode-input" value="27613"><br>
             </form>
         </div>
+
 
         <div class="container">
             <h2 id="grainSectionFonts"></h2>
@@ -103,28 +108,34 @@
             <button type="button" class="btn btn-default btn-med" id="submitButton">Submit</button>       
         </div> <!-- submit -->
 
+
     </div> <!-- selectbeers -->
+
     
     <div id="cards">
         <div class="container">
-            <h2 class="header text_b">Your Recommended Beers:</h2>
+            <h2 class="header recommendedBeers">Your Recommended Beers:</h2>
           
+
             <div class="row" id="beerResults"></div>
             
+
         </div>
     </div>
 
     <!--map div-->
     <div id="yourMap">
-        <div class="container">
+        <div class="container mapContainer">
             <div class="row">
                 <div class="col s12">
                     <h2 class="center header text_h2"> FIND YOUR <span class="span_h2"> BREW </span></h2>
                 </div>
+
                 <div class="col s12 white darken-2" id="map">GOOGLE MAPS
                 </div>      
             </div>
         </div>
+
     </div>
 
     <div id="map"></div>
@@ -133,11 +144,11 @@
     <!-- FAVES-->
     <div id="inspiration">
         <div class="container">
-            <h2 class="header text_b">Our Favorites of the Week</h2>
-            <div class="row">
+            <h2 class="header teamFavs">Our Favorites of the Week</h2>
+            <div class="row teamPicksSection">
                 
-                <div class="col s12 m3">
-                    <div class="card card-avatar">
+                <div class=".col-md-4">
+                    <div class="card card-avatar teamPicks">
                         <div class="waves-effect waves-block waves-light">
                             <img class="activator" src="">
                         </div>
@@ -148,8 +159,8 @@
                     </div>
                 </div>
                 
-                <div class="col s12 m3">
-                    <div class="card card-avatar">
+                <div class=".col-md-4">
+                    <div class="card card-avatar teamPicks">
                         <div class="waves-effect waves-block waves-light">
                             <img class="activator" src="">
                         </div>
@@ -162,8 +173,8 @@
                     </div>
                 </div>
                 
-                <div class="col s12 m3">
-                    <div class="card card-avatar">
+                <div class=".col-md-4">
+                    <div class="card card-avatar teamPicks">
                         <div class="waves-effect waves-block waves-light">
                             <img class="activator" src="">
                         </div>
@@ -175,8 +186,8 @@
                     </div>
                 </div>
 
-                <div class="col s12 m3">
-                    <div class="card card-avatar">
+                <div class=".col-md-4">
+                    <div class="card card-avatar teamPicks">
                         <div class="waves-effect waves-block waves-light">
                             <img class="activator" src="">
                         </div>
@@ -205,8 +216,8 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">Sarah<br/>
-                                <small><em><a class="red-text text-darken-1" href="#">Co-Founder</a></em></small></span>
-                            <p>
+                                <small><em><a class="red-text text-darken-1">Co-Founder</a></em></small>
+                            </span>    
                                 
                                 <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/sarah-stevens-985b825?trk=hp-identity-name" target="_blank">
                                     <i class="fa fa-linkedin-square"></i>
@@ -218,8 +229,6 @@
                                 <a class="blue-text text-lighten-2" href="mailto:sarahalicestevens@gmail.com" target="_blank">
                                     <i class="fa fa-envelope-square"></i>
                                 </a>
-
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -302,8 +311,10 @@
         </div>
     </div>
 
+
 </div> <!-- main body -->
 </body>
+
 
 <script src = "assets/javascript/zipcode.js"></script>
 <script src = "assets/javascript/brew.js"></script>
