@@ -6,7 +6,7 @@ var zipcode = 0,
 // Functions
 function zipCode() { // Purpose: add array of zip codes from zipcodeAPI database to "zipcodeArr"
 
-	var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/b345qo4ak2sZAlNimGscHnkFGVUMDlRPpWVQlZ0F1sFBOsUa9mnQKHwqDrcgM45c/radius.json/" + zipcode + "/5/mile?minimal"
+	var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/rYEGWOzlRcstzfZD3PJSDntYcHBzvOIWNmDJbc43owwXLvBPlkIYIcXVTzvpndlb/radius.json/" + zipcode + "/5/mile?minimal"
 
 	$.ajax({
 		url: zipcodeURL,

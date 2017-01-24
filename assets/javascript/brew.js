@@ -94,11 +94,8 @@ function grabBeer() {
       if(beerCount < brewery.length){
         grabBeer();
       }
-    //  console.log("hi")
     }) // end of function(response)
-    }
-  //} // end of for-loop
-  
+  }  
 };//end of grabBeer
 
 
