@@ -27,7 +27,8 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 database.ref().push({
-  // variables to push to firebase
+  beerInfo
+  breweryInfo
 });
 
 
