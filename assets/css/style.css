@@ -1,5 +1,14 @@
 
-/*main color palate  (orange) and #92a55e (green)*/
+/*main color palate #e17d1f (orange) and #92a55e (green)*/
+
+#nav-f {
+  position: fixed;
+}
+#mainContainer {
+  color: #fff;
+  background: #e17d1f;
+}
+
 .btn-default{
   background: #e17d1f;
 
@@ -28,11 +37,11 @@
 
 }
 
-
 .btn:hover,
 .btn-large:hover {
     background-color: #92a55e
 }
+
 
 #mission {
   color: #fff;
@@ -40,6 +49,7 @@
   padding: 50px;
 
 }
+
 #navLinks {
   float: right;
 }
@@ -67,6 +77,10 @@
     visibility: visible
 }
 
+#inspiration {
+  background: #92a55e;
+  padding-bottom: 30px;
+}
 /*sarah note-find a new favorite bar button*/
 .btn-large {
 
@@ -76,6 +90,9 @@
   background: #E17D1F;
 }
 
+#inspirationHeader {
+  color: #fff;
+}
 #missionStatement{
   background: #92a55e;
   color: #fff;
