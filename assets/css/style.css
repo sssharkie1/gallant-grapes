@@ -332,7 +332,13 @@ nav,
 
 /* card picture alignment*/
 .waves-block {
-    display: block
+    display: block;
 }
+.teamPicksSection {
+  display: inline-flex;
 
+}
+.teamPicks {
+  margin: 50px;
+}
 
