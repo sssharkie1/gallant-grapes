@@ -44,7 +44,7 @@ function grabBeer() {
     }).done(function(response){
 
       if(response.hasOwnProperty("data")){ // makes sure brewery HAS beers available
-        // APPEND BREWERY NAME TO HTML FIRST...NEVERMIND
+        // APPEND BREWERY NAME TO HTML FIRST...NEVERMIND THIS NEEDS TO BE FIXED
         var beerDiv = $("<div class='beerOptions'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
         $("#beerResults").append(beerDiv)
 
