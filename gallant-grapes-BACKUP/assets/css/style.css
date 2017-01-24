@@ -1,0 +1,353 @@
+
+/*main color palate  (orange) and #92a55e (green)*/
+.btn-default{
+  background: #e17d1f;
+
+}
+
+.mainContainer {
+  background: #e17d1f;
+}
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+    margin-top: 5px; /*sarah - added for bottle position*/
+}
+
+#yourMap {
+  background: #fff;
+
+}
+.hopsDiv {
+    margin-top: 50px;
+  padding-top: 100px;
+}
+#hopsSection {
+  background-repeat: no-repeat;
+
+}
+
+
+.btn:hover,
+.btn-large:hover {
+    background-color: #92a55e
+}
+
+#mission {
+  color: #fff;
+  background: #92a55e;
+  padding: 50px;
+
+}
+#navLinks {
+  float: right;
+}
+
+.container .row {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem
+}
+
+.cd-headline.type b {
+    visibility: hidden
+}
+
+.cd-headline.type b.is-visible {
+    visibility: visible
+}
+
+.cd-headline.type i {
+    position: absolute;
+    visibility: hidden
+}
+
+.cd-headline.type i.in {
+    position: relative;
+    visibility: visible
+}
+
+/*sarah note-find a new favorite bar button*/
+.btn-large {
+
+	width: 100%;
+	height: 64px;
+  font-size: 1.25em;
+  background: #E17D1F;
+}
+
+#missionStatement{
+  background: #92a55e;
+  color: #fff;
+}
+/*sarah note-for map section only*/
+#map {
+
+	width: 100%;
+  height: 200px;
+}
+
+/*sarah note-cant find on page*/
+img.cardImage {
+	height: 200px;
+	width: 300px;
+}
+
+/*sarah note-can't find on page*/
+.itemInfo {
+	margin-bottom: 5px;
+}
+
+/*sarah note-top left of page - logo and image only*/
+nav .brand-logo {
+  letter-spacing: 0.0525em;
+  font-weight: 300;
+
+}
+/*sarah note-for hops-background image*/
+
+#selectBeers{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding: 80px;
+}
+
+#grainSectionFonts {
+  color: #fff;
+  font-size: 18px;
+}
+
+#zipRequired {
+  color: #e17d1f;
+}
+#zipCode-form{
+    margin-left: 70px;
+}
+#zipCode-input {
+  background-color: #e17d1f;
+}
+.selectionButtons {
+  background: #e17d1f;
+}
+/*sarah note-contact us form only*/
+input[type=text], input[type=email] { 
+  color: red;
+}
+/*sarah note- - need these?*/
+/*COLORS FOR THE LOCATION TYPE BAR*/
+  /* label color */
+   .input-field label {
+     color: white;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: white;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: white;
+   }
+
+h1{
+    color: white;
+}
+/*sarah note - header and footer*/
+.default_color {
+    background-color: #E17D1F !important
+}
+
+/* sarah note - cant find*/
+.default_color_text {
+    color: green !important
+}
+
+/*sarah note - can't find*/
+.icon-block {
+    padding: 0 15px;
+}
+
+/* sarah - cant find*/
+#intro,
+#work,
+#team {
+    padding-top: 4rem
+    background: #C2C1C0;
+}
+
+#zipCode-form {
+  float: right;
+}
+#zipCode-input {
+  color: grey;
+  text-align: center;
+}
+/*sarah note - affects top bottle image/cartton in nav bar*/
+#nav_f {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important
+}
+
+/* sarah note - title header only - was at 100 for font weight*/
+.text_h {
+    padding: 15% 0;
+    font-size: 6.0em;
+    /*font-weight: 100;*/
+    font-weight: 300;
+    color: white
+}
+
+/* sarah note - can't find elements affected by this*/
+.brand-logo {
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    font-weight: bolder;
+    font-style: normal;
+    margin-top: 20px;
+    letter-spacing: 7px
+}
+
+/*sarah note - placement of header nav bar only*/
+.logo-navbar{
+    height: 3rem;
+    padding-right: .5rem
+}
+
+/* - sarah note - affects the "find your.." text above maps*/
+.text_h2 {
+    font-weight: 100;
+    margin-bottom: 4%;
+    line-height: 4.5rem;
+    color: #fff;
+}
+/* - sarah note - affects the "...beer" text above maps*/
+.span_h2 {
+    font-weight: 300;
+    color: #E17D1F 
+}
+
+/* sarah note - Styles to search by, Our Favorites and The Team text*/
+.text_b {
+    color: #e17d1f
+}
+
+.teamFavs {
+  color: #fff;
+}
+.recommendedBeers {
+  color: #fff;
+}
+
+#waves-effect waves-block waves-light{
+  max width: 400px;
+}
+/*sarah note - for team "co-founder"*/
+
+.card-content {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+.card-content a {
+    color: #e17d1f
+}
+
+/*sarah note - for team picks*/
+.card-content a:hover {
+    color: #92a55e 
+}
+
+/*sarah note - team background*/
+#work,
+#team {
+    background: rgb(247, 247, 247)
+}
+
+/*sarah note nav bar lettering*/
+nav ul a {
+    font-size: 1.2rem;
+    color: #FFF;
+    letter-spacing: 2px;
+    display: block;
+    margin-top: 5px;
+    font-weight: 300;
+    padding: 0px 15px
+}
+
+/* cards styling*/
+.z-depth-1,
+nav,
+.card-panel,
+.card,
+.toast,
+.btn-large,
+.btn-floating,
+.dropdown-content,
+.collapsible,
+.side-nav {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+}
+
+/* card image alignment*/
+.card-avatar .waves-effect {
+    text-align: center;
+    margin-top: 20px
+}
+
+.card-avatar img {
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    margin-top: 20px
+    border-radius: 75px
+}
+
+.card-avatar-fav img {
+    margin-top: 20px; 
+    height: 150px;
+    width: 150px;
+    text-align: center;
+}
+
+.card-avatar .card-content {
+    text-align: center
+}
+
+.card .card-content p {
+    margin: 15px 0px;
+}
+
+.card-avatar .card-content i {
+    font-size: 1.5rem
+}
+
+.card-avatar .card-content .card-title {
+    line-height: 30px !important
+}
+
+/* card picture alignment*/
+.waves-block {
+    display: block;
+}
+.teamPicksSection {
+  display: inline-flex;
+
+}
+.teamPicks {
+  margin: 50px;
+}
+
