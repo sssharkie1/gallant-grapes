@@ -120,7 +120,7 @@ nav .brand-logo {
 #zipRequired {
   color: #e17d1f;
 }
-.zipCodeForm{
+#zipCode-form{
     margin-left: 70px;
 }
 #zipCode-input {
