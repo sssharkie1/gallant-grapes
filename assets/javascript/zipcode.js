@@ -24,11 +24,20 @@ function zipCode() { // Purpose: add array of zip codes from zipcodeAPI database
 // Code to execute
 
 $("#enterButton").on("click", function(){
-	
-	zipcode = $("#zipCode-input").val().trim(); // sets "zipcode" to user input ******** need validation ********
-    $("#zipCode-input").val(""); // clears zip code field
+	zipcode = document.getElementById("zipCode-input").value;
+	// zipcode = $("#zipCode-input").val().trim(); // sets "zipcode" to user input ******** need validation ********
+	if (zipcode.length < 4 || zipcode.length > 5) {
+		event.preventDefault();
+		$(".invalidZip").remove();
 
-    zipCode();
+		$(".zipCodeForm").prepend("<p class = 'invalidZip'>" + "Enter Valid Zip Code" + "</p>")
+	}
+	else {
+		$(".invalidZip").remove();
+    	zipCode();
+		}
+
+    $("#zipCode-input").val(""); // clears zip code field
 
     return false;
 })
