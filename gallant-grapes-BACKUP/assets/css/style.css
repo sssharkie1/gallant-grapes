@@ -311,7 +311,16 @@ nav,
 .card-avatar img {
     height: 150px;
     width: 150px;
+    text-align: center;
+    margin-top: 20px
     border-radius: 75px
+}
+
+.card-avatar-fav img {
+    margin-top: 20px; 
+    height: 150px;
+    width: 150px;
+    text-align: center;
 }
 
 .card-avatar .card-content {
@@ -319,7 +328,7 @@ nav,
 }
 
 .card .card-content p {
-    margin: 15px 0px
+    margin: 15px 0px;
 }
 
 .card-avatar .card-content i {
@@ -342,14 +351,3 @@ nav,
   margin: 50px;
 }
 
-.btn-group input {
- display:none;
-}
-
-input:checked + label {
- background:#92a55e;
-}
-
-label.btn:hover {
- background:#92a55e;
-}

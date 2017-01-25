@@ -5,7 +5,6 @@ var brewery = []; // holds all brewery info
 
 var counter = 0;
 var beerCount = 0;
-var brewExist = true;
 
 // User selected ranges
 var srmMin = 0,
@@ -28,7 +27,8 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 database.ref().push({
-  // variables to push to firebase
+  beerInfo
+  breweryInfo
 });
 
 
@@ -45,15 +45,15 @@ function grabBeer() {
     }).done(function(response){
 
       if(response.hasOwnProperty("data")){ // makes sure brewery HAS beers available
-      // APPEND BREWERY NAME TO HTML FIRST...NEVERMIND
-      
+        // APPEND BREWERY NAME TO HTML FIRST...NEVERMIND
+        var beerDiv = $("<div class='beerOptions'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
+        $("#beerResults").append(beerDiv)
 
         var beer = [];
-
         
         var beerResult = response.data;
 
-        for (var j = 0; j < beerResult.length; j++) { // for-loop to add all beers from 1 brewery
+        for (var j = 0; j < 1; j++) { // for-loop to add all beers from 1 brewery
           var falseCount = 0;
           beerInfo = {"Name" : beerResult[j].name,
                       "ABV" : beerResult[j].style.abvMax,
@@ -73,44 +73,20 @@ function grabBeer() {
           if(Number(beerInfo.ABV) > Number(abvMax) || Number(beerInfo.ABV) < Number(abvMin)){
             falseCount++;
           }
-          if(falseCount === 0 || falseCount === 1){
-            if(brewExist === true){
-              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
-
-              $("#beerResults").append(brewDiv);
-
-              var exactDiv = $("<div id='exact" + beerCount + "'>").append("<br>");
-              var closeDiv = $("<div id='close" + beerCount + "'>").append("<br>");
-
-              $("#brewery" + beerCount).append(exactDiv).append(closeDiv);
-              
-              brewExist = false;
-            }
-
-            if(falseCount === 0){ // Beer meets criteria
-
+          if(falseCount === 0){ // Beer meets criteria
             beer.push(beerInfo);
-
-            // APPEND BEER TO HTML 
-            console.log(beer)
-            var p = $("<p>").append("Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
-
-            $("#exact" + beerCount).append(p);
-            }
-            else if(falseCount === 1){ // Beer is close enough
             
+            // APPEND BEER TO HTML 
+            var p = $("<p>").append("Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
+            $("#beerResults").append(p);
+          }
+          else if(falseCount === 1){ // Beer is close enough
             beer.push(beerInfo);
 
             // APPEND BEER TO HTML
             var p = $("<p>").append("*Close match* Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
-            $("#close" + beerCount).append(p);
+            $("#beerResults").append(p);
           }
-
-
-
-
-          }
-          
          
         }//end of for loop for beerResult
 
@@ -118,11 +94,12 @@ function grabBeer() {
       beerCount++;
       if(beerCount < brewery.length){
         grabBeer();
-        brewExist = true;
-
       }
+    //  console.log("hi")
     }) // end of function(response)
-  }  
+    }
+  //} // end of for-loop
+  
 };//end of grabBeer
 
 
@@ -165,30 +142,12 @@ function grabBrew() { // Purpose: Add all breweries from all zip codes to brewer
     })//end of function(response)
   } // if statement
 } // end function grabBrew()
-
-function zipCode() { // Purpose: add array of zip codes from zipcodeAPI database to "zipcodeArr"
-
-  var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/b345qo4ak2sZAlNimGscHnkFGVUMDlRPpWVQlZ0F1sFBOsUa9mnQKHwqDrcgM45c/radius.json/" + zipcode + "/5/mile?minimal"
-
-  $.ajax({
-    url: zipcodeURL,
-    method: "GET",
-    headers: { "X-Requested-With": "" },
-  }).done(function(response){
-
-    zipcodeArr = response.zip_codes;
-    grabBrew();
-
-  }) // end of function(response)
-
-} // end of function zipCode
-
     
 
 // Code to execute
-$("input:radio").on("click", function() { // sets user selected ranges based on which button clicked
+$("button:button").on("click", function() { // sets user selected ranges based on which button clicked
 
-  var type = $(this).attr("name"); // grabs category (srm, ibv, abv)
+  var type = $(this).attr("category"); // grabs category (srm, ibv, abv)
   
   // Set all ranges
   if(type === "color"){ // if-statement is probably not the best way to do this but i'm out of ideas 
@@ -212,11 +171,7 @@ $(document).on("click", "#submitButton", function() { // runs everything else
     //clear results div or however is displayed in html
     // $("#beerResults").empty(); --> commented this out for now until we need it
 
-    zipcode = $("#zipCode-input").val().trim(); // sets "zipcode" to user input ******** need validation ********
-    $("#zipCode-input").val(""); // clears zip code field
-
-    zipCode();
-
+    grabBrew();
     return false;
 
 });//end of on click results
