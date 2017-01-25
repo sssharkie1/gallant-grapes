@@ -36,6 +36,17 @@ database.ref().push({
 
 
 // Functions
+function checkBeer(){ // Purpose: check beer against criteria
+
+
+
+  beerCount++;
+  if(beerCount < brewery.length){ // prompts grabBeer to run again if there are more breweries to search through
+    brewExist = true;
+    grabBeer();
+  }
+}
+
 function grabBeer() { // Purpose: check all beers of every brewery and match it to user criteria 
 
   if(beerCount < brewery.length){ // purpose: count how many times AJAX call has been run (should be = to # of breweries)
@@ -107,11 +118,8 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
         }// end of for loop for beerResult
       } // end of if statement checking if there are beers avail in brewery
       
-      beerCount++;
-      if(beerCount < brewery.length){ // prompts grabBeer to run again if there are more breweries to search through
-        brewExist = true;
-        grabBeer();
-      }
+      checkBeer();
+
     }) // end of function(response)
   }  
 };//end of grabBeer
@@ -183,7 +191,7 @@ function startOver(){
 
   brewCount = 0;
   beerCount = 0; 
-  brewExist = true;
+  brewExist = true;// Purpose: reset all variables, remove everything written to index.html
 
 }
 
@@ -193,6 +201,7 @@ function startOver(){
 $("input:radio").on("click", function() { // sets user selected ranges based on which button clicked
 
   var type = $(this).attr("name"); // grabs category (srm, ibv, abv)
+  // if statement here 
   
   // Set all ranges
   if(type === "color"){ 

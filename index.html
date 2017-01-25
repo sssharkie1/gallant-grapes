@@ -34,15 +34,13 @@
 
             <div class="container" id="hopsSection" style="background-image: url(assets/img/hops2.jpg);width: 1000px" align="center">
 
-
                 <h1 class="text_h center header cd-headline letters type">
                 
                     <span>Find a local </span>
                     <span class="cd-words-wrapper waiting">
                         <b class="is-visible">Brew</b>
                         <b>Brewery</b>
-                        <b>Bar</b>
-                       
+                        <b>Bar</b>           
                     </span>
                 </h1>
             </div>
@@ -53,37 +51,35 @@
         </div>  
 
 
-
-
         <div id="selectBeers" style="background-image: url(assets/img/grains6.jpg)">
 
-                <div id="zipCode-form"> 
-                      <h2 id="grainSectionFonts">Enter a Zip Code <span id="zipRequired">*Required*</span></h2>
-                    <input type="number" id="zipCode-input">
-                    <br>
-                </div>
+            <div id="zipCode-form"> 
+                  <h2 id="grainSectionFonts">Enter a Zip Code <span id="zipRequired">*Required*</span></h2>
+                <input type="number" id="zipCode-input">
+                <br>
+            </div>
 
-        <div id="alertModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Please Enter a valid Zip</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-default" data-dismiss="modal">
-                            Close</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+            <div id="alertModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Please Enter a valid Zip</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal">
+                                Close</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
 
-<div class="container">
-               <div class = "btn-group">
+            <div class="container">
+                <div class = "btn-group">
                    <h2 id="grainSectionFonts">Color</h2>
                    <input type="radio" class="btns" name="color" value=1 colorMin="0" colorMax="10" id="veryLight">
                    <label class="btn btn-default btn-med" for="veryLight">Very Light</label>
@@ -134,16 +130,15 @@
                 <h2 id="grainSectionFonts"></h2>
                 <button type="button" class="btn btn-default btn-med" id="submitButton">Submit</button>       
             </div> <!-- submit -->
-        </div>    
+
+        </div> <!-- selectBeers -->
         
         <div id="cards">
             <div class="container">
-                <h2 class="header recommendedBeers">Your Recommended Beers:</h2>
-              
+                <h2 class="header recommendedBeers">Your Recommended Beers:</h2>        
 
                 <div class="row" id="beerResults"></div>
                 
-
             </div>
         </div>
 
