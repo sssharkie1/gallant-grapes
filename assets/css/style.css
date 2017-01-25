@@ -342,3 +342,14 @@ nav,
   margin: 50px;
 }
 
+.btn-group input {
+ display:none;
+}
+
+input:checked + label {
+ background:#92a55e;
+}
+
+label.btn:hover {
+ background:#92a55e;
+}

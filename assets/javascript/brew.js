@@ -168,9 +168,9 @@ function grabBrew() { // Purpose: Add all breweries from all zip codes to brewer
     
 
 // Code to execute
-$("button:button").on("click", function() { // sets user selected ranges based on which button clicked
+$("input:radio").on("click", function() { // sets user selected ranges based on which button clicked
 
-  var type = $(this).attr("category"); // grabs category (srm, ibv, abv)
+  var type = $(this).attr("name"); // grabs category (srm, ibv, abv)
   
   // Set all ranges
   if(type === "color"){ // if-statement is probably not the best way to do this but i'm out of ideas 
