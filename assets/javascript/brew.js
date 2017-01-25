@@ -78,7 +78,7 @@ function grabBeer() {
           }
           if(falseCount === 0 || falseCount === 1){
             if(brewExist === true){
-              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
+              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>" + "<a href=''>" + brewery[beerCount].website + "</a>" + "<br>Address: " + "<p>" + brewery[beerCount].streetName + "<br>" + brewery[beerCount].locality + ", " + brewery[beerCount].state + " " + brewery[beerCount].postalCode + "</p>" + "<br>");
 
               $("#beerResults").append(brewDiv);
 
@@ -107,12 +107,9 @@ function grabBeer() {
             // APPEND BEER TO HTML
             var p = $("<p>").append("*Close match* Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
             $("#close" + beerCount).append(p);
+            }
           }
-
-
-
-
-          }
+          
           
          
         }//end of for loop for beerResult
@@ -152,7 +149,9 @@ function grabBrew() { // Purpose: Add all breweries from all zip codes to brewer
                         "longitude" : breweryResult[i].longitude,
                         "streetName" : breweryResult[i].streetAddress,
                         "state" : breweryResult[i].region,
-                        "locality": breweryResult[i].locality 
+                        "locality": breweryResult[i].locality,
+                        "postalCode": breweryResult[i].postalCode,
+                        "website": breweryResult[i].brewery.website
                         } //end of breweryInfo object
 
           brewery.push(breweryInfo); // pushes current brewery's entire info (stored as object) into array
