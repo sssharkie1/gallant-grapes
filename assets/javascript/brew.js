@@ -141,6 +141,24 @@ function grabBrew() { // Purpose: Add all breweries from all zip codes to brewer
     })//end of function(response)
   } // if statement
 } // end function grabBrew()
+
+function zipCode() { // Purpose: add array of zip codes from zipcodeAPI database to "zipcodeArr"
+
+  var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/b345qo4ak2sZAlNimGscHnkFGVUMDlRPpWVQlZ0F1sFBOsUa9mnQKHwqDrcgM45c/radius.json/" + zipcode + "/5/mile?minimal"
+
+  $.ajax({
+    url: zipcodeURL,
+    method: "GET",
+    headers: { "X-Requested-With": "" },
+  }).done(function(response){
+
+    zipcodeArr = response.zip_codes;
+    grabBrew();
+
+  }) // end of function(response)
+
+} // end of function zipCode
+
     
 
 // Code to execute
@@ -170,7 +188,11 @@ $(document).on("click", "#submitButton", function() { // runs everything else
     //clear results div or however is displayed in html
     // $("#beerResults").empty(); --> commented this out for now until we need it
 
-    grabBrew();
+    zipcode = $("#zipCode-input").val().trim(); // sets "zipcode" to user input ******** need validation ********
+    $("#zipCode-input").val(""); // clears zip code field
+
+    zipCode();
+
     return false;
 
 });//end of on click results
