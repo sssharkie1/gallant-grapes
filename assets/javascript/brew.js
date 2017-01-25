@@ -1,6 +1,9 @@
 $(document).ready(function() {
 
 // Variables
+var zipcode = 0,
+    zipcodeArr = [];
+
 var brewery = []; // holds all brewery info
 
 var counter = 0;
@@ -168,7 +171,7 @@ function grabBrew() { // Purpose: Add all breweries from all zip codes to brewer
 
 function zipCode() { // Purpose: add array of zip codes from zipcodeAPI database to "zipcodeArr"
 
-  var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/b345qo4ak2sZAlNimGscHnkFGVUMDlRPpWVQlZ0F1sFBOsUa9mnQKHwqDrcgM45c/radius.json/" + zipcode + "/5/mile?minimal"
+  var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/rYEGWOzlRcstzfZD3PJSDntYcHBzvOIWNmDJbc43owwXLvBPlkIYIcXVTzvpndlb/radius.json/" + zipcode + "/5/mile?minimal"
 
   $.ajax({
     url: zipcodeURL,
@@ -212,10 +215,22 @@ $(document).on("click", "#submitButton", function() { // runs everything else
     //clear results div or however is displayed in html
     // $("#beerResults").empty(); --> commented this out for now until we need it
 
-    zipcode = $("#zipCode-input").val().trim(); // sets "zipcode" to user input ******** need validation ********
-    $("#zipCode-input").val(""); // clears zip code field
+    zipcode = document.getElementById("zipCode-input").value;
+    console.log("button");
+    // zipcode = $("#zipCode-input").val().trim(); // sets "zipcode" to user input ******** need validation ********
+    if (zipcode.length < 4 || zipcode.length > 5) {
+      event.preventDefault();
+      $(".invalidZip").remove();
 
-    zipCode();
+      $("#zipCode-form").prepend("<p class = 'invalidZip'>" + "Enter Valid Zip Code" + "</p>");
+      console.log("wrong zip");
+    }
+    else {
+      $(".invalidZip").remove();
+        zipCode();
+      }
+
+      $("#zipCode-input").val(""); // clears zip code field
 
     return false;
 
