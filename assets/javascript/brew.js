@@ -5,6 +5,7 @@ var brewery = []; // holds all brewery info
 
 var counter = 0;
 var beerCount = 0;
+var brewExist = true;
 
 // User selected ranges
 var srmMin = 0,
@@ -45,14 +46,14 @@ function grabBeer() {
 
       if(response.hasOwnProperty("data")){ // makes sure brewery HAS beers available
         // APPEND BREWERY NAME TO HTML FIRST...NEVERMIND
-        var beerDiv = $("<div class='beerOptions'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
-        $("#beerResults").append(beerDiv)
+        
 
         var beer = [];
+
         
         var beerResult = response.data;
 
-        for (var j = 0; j < 1; j++) { // for-loop to add all beers from 1 brewery
+        for (var j = 0; j < beerResult.length; j++) { // for-loop to add all beers from 1 brewery
           var falseCount = 0;
           beerInfo = {"Name" : beerResult[j].name,
                       "ABV" : beerResult[j].style.abvMax,
@@ -72,20 +73,44 @@ function grabBeer() {
           if(Number(beerInfo.ABV) > Number(abvMax) || Number(beerInfo.ABV) < Number(abvMin)){
             falseCount++;
           }
-          if(falseCount === 0){ // Beer meets criteria
+          if(falseCount === 0 || falseCount === 1){
+            if(brewExist === true){
+              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
+
+              $("#beerResults").append(brewDiv);
+
+              var exactDiv = $("<div id='exact" + beerCount + "'>").append("<br>");
+              var closeDiv = $("<div id='close" + beerCount + "'>").append("<br>");
+
+              $("#brewery" + beerCount).append(exactDiv).append(closeDiv);
+              
+              brewExist = false;
+            }
+
+            if(falseCount === 0){ // Beer meets criteria
+
             beer.push(beerInfo);
-            
+
             // APPEND BEER TO HTML 
+            console.log(beer)
             var p = $("<p>").append("Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
-            $("#beerResults").append(p);
-          }
-          else if(falseCount === 1){ // Beer is close enough
+
+            $("#exact" + beerCount).append(p);
+            }
+            else if(falseCount === 1){ // Beer is close enough
+            
             beer.push(beerInfo);
 
             // APPEND BEER TO HTML
             var p = $("<p>").append("*Close match* Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
-            $("#beerResults").append(p);
+            $("#close" + beerCount).append(p);
           }
+
+
+
+
+          }
+          
          
         }//end of for loop for beerResult
 
@@ -93,6 +118,8 @@ function grabBeer() {
       beerCount++;
       if(beerCount < brewery.length){
         grabBeer();
+        brewExist = true;
+
       }
     }) // end of function(response)
   }  
