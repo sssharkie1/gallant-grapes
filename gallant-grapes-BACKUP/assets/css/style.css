@@ -118,7 +118,7 @@ nav .brand-logo {
 }
 
 #zipRequired {
-  color: #e17d1f;
+  color: #fff;
 }
 #zipCode-form{
     margin-left: 70px;
@@ -189,9 +189,6 @@ h1{
     background: #C2C1C0;
 }
 
-#zipCode-form {
-  float: right;
-}
 #zipCode-input {
   color: grey;
   text-align: center;
