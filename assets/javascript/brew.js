@@ -5,6 +5,7 @@ var zipcode = 0, // to be replaced with user input
     zipcodeArr = []; // holds list of zip codes within 5 miles (returned from zip code api)
 
 var brewery = []; // holds every brewery info 
+var beer = [];//testing up here instead
 
 var brewCount = 0; 
 var beerCount = 0;
@@ -61,7 +62,7 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
 
       if(response.hasOwnProperty("data")){ // makes sure brewery HAS beers available   
 
-        var beer = [];
+        // var beer = [];
         
         var beerResult = response.data;
 
@@ -109,7 +110,7 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
 
               beer.push(beerInfo);
 
-              var p = $("<p>").append("Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
+              var p = $("<p>").append("Name of beer: " + beer.Name + " | ABV: " + beer.ABV + "% | Hoppiness: " + beer.Hoppiness + " | Color: " + beer.Color);     
 
               $("#exact" + beerCount).append(p);
             }
@@ -118,7 +119,8 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
               
               beer.push(beerInfo);
 
-              var p = $("<p>").append("*Close match* Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
+              var p = $("<p>").append("*Close match* Name of beer: " + beer.Name + " | ABV: " + beer.ABV + "% | Hoppiness: " + beer.Hoppiness + " | Color: " + beer.Color);     
+              
               $("#close" + beerCount).append(p);
             }
           } // end of if-statement for beer that meets criteria (exact or close)     
