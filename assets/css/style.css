@@ -301,7 +301,9 @@ nav,
   margin-left: 220px;
 }
 
-
+#beerResults {
+  color: #fff;
+}
 /*NOT USED*/
 /*sarah note-for map section only*/
 /*#map {

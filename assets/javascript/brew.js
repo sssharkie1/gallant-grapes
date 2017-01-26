@@ -1,22 +1,22 @@
 $(document).ready(function() {
 
 // Variables
-var zipcode = 0,
-    zipcodeArr = [];
+var zipcode = 0, // to be replaced with user input
+    zipcodeArr = []; // holds list of zip codes within 5 miles (returned from zip code api)
 
-var brewery = []; // holds all brewery info
+var brewery = []; // holds every brewery info 
 
-var counter = 0;
+var brewCount = 0; 
 var beerCount = 0;
-var brewExist = true;
+var brewExist = true; // purpose: if brewery has already been written to html page, brewExist will === false
 
-// User selected ranges
+// User selected criteria
 var srmMin = 0,
-    srmMax = 100,
+    srmMax = 0,
     ibuMin = 0,
-    ibuMax = 100,
+    ibuMax = 0,
     abvMin = 0,
-    abvMax = 100
+    abvMax = 0
 
 // Firebase
 var config = {
@@ -36,8 +36,20 @@ database.ref().push({
 
 
 // Functions
-function grabBeer() {   
-  if(beerCount < brewery.length){ // AJAX only runs if conditions met
+function checkBeer(){ // Purpose: check beer against criteria
+
+
+
+  beerCount++;
+  if(beerCount < brewery.length){ // prompts grabBeer to run again if there are more breweries to search through
+    brewExist = true;
+    grabBeer();
+  }
+}
+
+function grabBeer() { // Purpose: check all beers of every brewery and match it to user criteria 
+
+  if(beerCount < brewery.length){ // purpose: count how many times AJAX call has been run (should be = to # of breweries)
     
     var queryBreweryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/brewery/" + brewery[beerCount].id + "/beers/?key=9bb3bc076d572ad09b636ac87cc944c9";
 
@@ -47,38 +59,41 @@ function grabBeer() {
       headers: { "X-Requested-With": "" }
     }).done(function(response){
 
-      if(response.hasOwnProperty("data")){ // makes sure brewery HAS beers available
-      // APPEND BREWERY NAME TO HTML FIRST...NEVERMIND
-      
+      if(response.hasOwnProperty("data")){ // makes sure brewery HAS beers available   
 
         var beer = [];
-
         
         var beerResult = response.data;
 
-        for (var j = 0; j < beerResult.length; j++) { // for-loop to add all beers from 1 brewery
-          var falseCount = 0;
+        for (var j = 0; j < beerResult.length; j++) { // for loop to add qualified beers from 1 brewery to array
+          var falseCount = 0; // purpose: checks how many criteria it meets (0 = meets all 3 criteria, 1 = close match)
+
           beerInfo = {"Name" : beerResult[j].name,
                       "ABV" : beerResult[j].style.abvMax,
                       "Hoppiness" : beerResult[j].style.ibuMin,
                       "Color" : beerResult[j].style.srmMin,
-                      // "Category" : beerResult[j].style.category.name, <--- if using
                       "Description" : beerResult[j].style.description
-                      }//end of beerInfo object
+                      } //end of beerInfo object
           
           // Checking if beer meets criteria
           if(Number(beerInfo.Color) > Number(srmMax) || Number(beerInfo.Color) < Number(srmMin)){
             falseCount++;
+            // console.log(falseCount);
           }
           if(Number(beerInfo.Hoppiness) > Number(ibuMax) || Number(beerInfo.Hoppiness) < Number(ibuMin)){
             falseCount++;
+            console.log(falseCount);
+
           }
           if(Number(beerInfo.ABV) > Number(abvMax) || Number(beerInfo.ABV) < Number(abvMin)){
             falseCount++;
+            console.log(falseCount);
+
           }
           if(falseCount === 0 || falseCount === 1){
             if(brewExist === true){
-              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
+              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>" + "<a href=''>" + brewery[beerCount].website + "</a>" + "<br>Address: " + "<p>" + brewery[beerCount].streetName + "<br>" + brewery[beerCount].locality + ", " + brewery[beerCount].state + " " + brewery[beerCount].postalCode + "</p>" + "<br>");
+
 
               $("#beerResults").append(brewDiv);
 
@@ -90,50 +105,38 @@ function grabBeer() {
               brewExist = false;
             }
 
-            if(falseCount === 0){ // Beer meets criteria
+            if(falseCount === 0){ // beer meets exact criteria
 
-            beer.push(beerInfo);
+              beer.push(beerInfo);
 
-            // APPEND BEER TO HTML 
-            console.log(beer)
-            var p = $("<p>").append("Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
+              var p = $("<p>").append("Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
 
-            $("#exact" + beerCount).append(p);
+              $("#exact" + beerCount).append(p);
             }
-            else if(falseCount === 1){ // Beer is close enough
-            
-            beer.push(beerInfo);
-
-            // APPEND BEER TO HTML
-            var p = $("<p>").append("*Close match* Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
-            $("#close" + beerCount).append(p);
-          }
-
-
-
-
-          }
           
-         
-        }//end of for loop for beerResult
+            else if(falseCount === 1){ // beer is close to meeting criteria
+              
+              beer.push(beerInfo);
 
-      } // end of if statement
-      beerCount++;
-      if(beerCount < brewery.length){
-        grabBeer();
-        brewExist = true;
+              var p = $("<p>").append("*Close match* Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
+              $("#close" + beerCount).append(p);
+            }
+          } // end of if-statement for beer that meets criteria (exact or close)     
+        }// end of for loop for beerResult
+      } // end of if statement checking if there are beers avail in brewery
+      
+      checkBeer();
 
-      }
     }) // end of function(response)
   }  
 };//end of grabBeer
 
 
-function grabBrew() { // Purpose: Add all breweries from all zip codes to brewery array
+function grabBrew() { // Purpose: add all breweries from all zip codes to brewery array
    
-  if(counter < zipcodeArr.length){
+  if(brewCount < zipcodeArr.length){ // purpose: counts how many times the AJAX call has run;
       
-    var queryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcodeArr[counter];
+    var queryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcodeArr[brewCount];
 
     $.ajax({
       url: queryURL,
@@ -141,35 +144,37 @@ function grabBrew() { // Purpose: Add all breweries from all zip codes to brewer
       headers: { "X-Requested-With": "" }
     }).done(function(response){
 
-      if(response.hasOwnProperty("data")){ // makes sure zip code HAS breweries available
+      if(response.hasOwnProperty("data")){ // purpose: makes sure zip code HAS breweries available
         var breweryResult = response.data; // array with brewery info as objects
 
-        for (var i = 0; i < breweryResult.length; i++){ // for-loop to add all breweries from 1 zip code into array
+        for (var i = 0; i < breweryResult.length; i++){ // purpose: add all breweries from 1 zip code into array
 
           breweryInfo = {"id" : breweryResult[i].brewery.id,
                         "name" : breweryResult[i].brewery.name,
-                        "latitude" : breweryResult[i].latitude,
-                        "longitude" : breweryResult[i].longitude,
                         "streetName" : breweryResult[i].streetAddress,
                         "state" : breweryResult[i].region,
-                        "locality": breweryResult[i].locality 
+                        "locality": breweryResult[i].locality,
+                        "postalCode": breweryResult[i].postalCode,
+                        "website": breweryResult[i].brewery.website
                         } //end of breweryInfo object
 
-          brewery.push(breweryInfo); // pushes current brewery's entire info (stored as object) into array
+          brewery.push(breweryInfo); // purpose: pushes current brewery's entire info (stored as object) into brewery array
         }   // end of for loop to add breweries 
       } //end of if statement
-      counter++;
-      if(counter < zipcodeArr.length){
+
+      brewCount++;
+      if(brewCount < zipcodeArr.length){ // run grabBrew again if there are still zip codes to search through for brewries
         grabBrew();
       }
-      else{ // if done pulling ALL brewery info, run grabBeer function
+      else{ // if done checking all zip codes for breweries, run grabBeer();
         grabBeer();
       }
+
     })//end of function(response)
   } // if statement
 } // end function grabBrew()
 
-function zipCode() { // Purpose: add array of zip codes from zipcodeAPI database to "zipcodeArr"
+function zipCode() { // Purpose: add all zip codes with 5 miles of user input zipcode to zipcodeArr
 
   var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/rYEGWOzlRcstzfZD3PJSDntYcHBzvOIWNmDJbc43owwXLvBPlkIYIcXVTzvpndlb/radius.json/" + zipcode + "/5/mile?minimal"
 
@@ -179,12 +184,25 @@ function zipCode() { // Purpose: add array of zip codes from zipcodeAPI database
     headers: { "X-Requested-With": "" },
   }).done(function(response){
 
-    zipcodeArr = response.zip_codes;
+    zipcodeArr = response.zip_codes; 
     grabBrew();
 
   }) // end of function(response)
 
 } // end of function zipCode
+
+function startOver(){
+  $("#beerResults").empty() // clears previous beer + brewery results
+
+  // Reset all variables and arrays
+  zipcodeArr = [];
+  brewery = [];
+
+  brewCount = 0;
+  beerCount = 0; 
+  brewExist = true;// Purpose: reset all variables, remove everything written to index.html
+
+}
 
     
 
@@ -192,17 +210,18 @@ function zipCode() { // Purpose: add array of zip codes from zipcodeAPI database
 $("input:radio").on("click", function() { // sets user selected ranges based on which button clicked
 
   var type = $(this).attr("name"); // grabs category (srm, ibv, abv)
+  // if statement here 
   
   // Set all ranges
-  if(type === "color"){ // if-statement is probably not the best way to do this but i'm out of ideas 
+  if(type === "color"){ 
     srmMin = $(this).attr("colorMin");
     srmMax = $(this).attr("colorMax");
   }
-  else if(type === "ibu"){
+  else if(type === "hoppy"){
     ibuMin = $(this).attr("ibuMin");
     ibuMax = $(this).attr("ibuMax");
   }
-  else if(type === "abv"){
+  else if(type === "alcohol"){
     abvMin = $(this).attr("abvMin");
     abvMax = $(this).attr("abvMax");
   }
@@ -212,27 +231,29 @@ $("input:radio").on("click", function() { // sets user selected ranges based on 
 
 $(document).on("click", "#submitButton", function() { // runs everything else
 
-    //clear results div or however is displayed in html
-    // $("#beerResults").empty(); --> commented this out for now until we need it
+  if(zipcodeArr.length > 0){
+      startOver();
+  }
 
-    zipcode = document.getElementById("zipCode-input").value;
-    console.log("button");
-    // zipcode = $("#zipCode-input").val().trim(); // sets "zipcode" to user input ******** need validation ********
-    if (zipcode.length < 4 || zipcode.length > 5) {
-      event.preventDefault();
-      $(".invalidZip").remove();
+  //clear results div or however is displayed in html
+  // $("#beerResults").empty(); --> commented this out for now until we need it
 
-      $("#zipCode-form").prepend("<p class = 'invalidZip'>" + "Enter Valid Zip Code" + "</p>");
-      console.log("wrong zip");
-    }
-    else {
-      $(".invalidZip").remove();
-        zipCode();
-      }
+  zipcode = document.getElementById("zipCode-input").value;
+  
+  if (zipcode.length <= 4 || zipcode.length > 5) {
+    event.preventDefault();
+    $(".invalidZip").remove();
 
-      $("#zipCode-input").val(""); // clears zip code field
+    $("#zipCode-form").prepend("<p class = 'invalidZip'>" + "Enter Valid Zip Code" + "</p>");
+  }
+  else {
+    $(".invalidZip").remove();
+      zipCode();
+  }
 
-    return false;
+  $("#zipCode-input").val(""); // clears zip code field
+
+  return false;
 
 });//end of on click results
 
