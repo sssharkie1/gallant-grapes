@@ -49,7 +49,7 @@
 
 /*NAVBAR
 
-/*sarah note - affects top bottle image/cartton in nav bar*/
+/*sarah note - affects top bottle image/cartoon in nav bar*/
 #bottle {
 
 }
@@ -79,9 +79,14 @@ nav ul a {
     padding: 0px 15px
 }
 
+#logo-container {
+  size: 200%;
+  color: #fff;
+  font-size: 34px;
+}
 /*sarah note - placement of header nav bar only*/
 .logo-navbar{
-    height: 3rem;
+    height: 7rem;
     padding-right: .5rem
 }
 
@@ -121,9 +126,6 @@ nav ul a {
 }
 
 /*SELECT LOCATION AND BEER QUALITIES DIV*/
-
-
-
 .btn-group input {
  display:none;
   border-top-left-radius: 0;
@@ -294,7 +296,6 @@ nav,
 .teamTitle {
   color: #fff;
 }
-
 
 .teamBusiness {
   display: inline-flex;
