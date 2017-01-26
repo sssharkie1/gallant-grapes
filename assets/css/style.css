@@ -47,8 +47,17 @@
     margin-right: -0.75rem
 }
 
-/*NAVBAR*/
+/*NAVBAR
 
+/*sarah note - affects top bottle image/cartton in nav bar*/
+#bottle {
+
+}
+
+#nav_f {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important
+}
 #navLinks {
   float: right;
 }
@@ -113,14 +122,7 @@ nav ul a {
 
 /*SELECT LOCATION AND BEER QUALITIES DIV*/
 
-/*buttons*/
-.btns {
-  margin: 20px;
-border-top-left-radius: 0;
- border-top-right-radius: 0;
- border-bottom-right-radius: 0;
- border-top-right-radius: 0;
-}
+
 
 .btn-group input {
  display:none;
@@ -328,11 +330,7 @@ img.cardImage {
     padding-top: 4rem
 }
 
-/*sarah note - affects top bottle image/cartton in nav bar
-#nav_f {
-    box-shadow: none !important;
-    -webkit-box-shadow: none !important
-}
+
 /* - sarah note - affects the "find your.." text above maps*/
 /*.text_h2 {
     font-weight: 100;
