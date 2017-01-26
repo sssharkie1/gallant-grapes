@@ -4,9 +4,9 @@
 
 
     <title>Find-A-Brew-Part2</title>
-    <link rel="stylesheet" href="assets/css/reset.css"> 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/reset.css"> 
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 
@@ -16,7 +16,7 @@
     <nav id="nav_f" class="default_color navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="#" id="logo-container" class="brand-logo"><img class="logo-navbar" id="bottle" src="assets/img/bars.png">Find-a-Brew</a>
+                <a href="#" id="logo-container" class="brand-logo"><img class="logo-navbar" id="bottle" src="../assets/img/bars.png">Find-a-Brew</a>
                 <ul class="right hide-on-med-and-down" id=navLinks>
                     <li><a href="#selectBeers">Find-a-Brew</a></li>
                     <li><a href="#inspiration">Featured</a></li>
@@ -32,92 +32,116 @@
 <div class=mainContainer>
         <div class="hopsDiv" id="index-banner">
 
-            <div class="container" id="hopsSection" style="background-image: url(assets/img/hops-background.png);width: 1000px" align="center">
-
+            <div class="container" id="hopsSection" style="background-image: url(../assets/img/hops2.jpg);width: 1000px" align="center">
 
                 <h1 class="text_h center header cd-headline letters type">
                 
                     <span>Find a local </span>
                     <span class="cd-words-wrapper waiting">
                         <b class="is-visible">Brew</b>
-                        <b>Brewery</b>
-                        <b>Bar</b>
-                       
+                        <b>Brewery</b>         
                     </span>
                 </h1>
             </div>
         </div>
 
         <div id="mission" align="text-center">
-            <h3 class="text-center">Where beer lovers can find beers they love with local breweries."</h3>
+            <h3 class="text-center">Find-A-Brew links beer lovers with unique beers from local breweries.  Tell us what you typically enjoy and enter your zipcode. Find-A-Brew will provide you with local options, as well as the breweries where you can try them.</h3>
         </div>  
 
 
+        <div id="selectBeers" style="background-image: url(../assets/img/grains6.jpg)">
 
+            <div id="zipCode-form"> 
+                  <h2 id="grainSectionFonts">Enter a Zip Code <span id="zipRequired">*Required*</span></h2>
+                <input type="number" id="zipCode-input">
+                <br>
+            </div>
 
-        <div id="selectBeers" style="background-image: url(assets/img/grains6.jpg)">
+            <div id="alertModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Please Enter a valid Zip</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal">
+                                Close</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
-                <div id="zipCode-form"> 
-                      <h2 id="grainSectionFonts">Enter a Zip Code <span id="zipRequired">*Required*</span></h2>
-                    <input type="number" id="zipCode-input">
-                    <br>
-                </div>
-
-<!--
-            <div class="container">
-            <h2 id="grainSectionFonts"></h2>
-            <button type="button" class="btn btn-default btn-med" id="enterButton">Enter</button>       
-            </div> <!-- enter -->
-
-
-            <div class="container">
-                <h2 id="grainSectionFonts">Color</h2>
-                <button type="button" colorMin="0" colorMax="10" category="color" class="btn btn-default btn-med" id="light" class="selectionButtons">Very Light</button> <!-- SRM 0-10 -->
-                <button type="button" colorMin="11" colorMax="20" category="color" class="btn btn-default btn-med" id="lightmed" class="selectionButtons">Light-Medium</button> <!-- SRM 11-20 -->
-                <button type="button" colorMin="21" colorMax="30" category="color" class="btn btn-default btn-med" id="meddark" class="selectionButtons">Medium-Dark</button> <!-- SRM 21-30 -->
-                <button type="button" colorMin="31" colorMax="100" category="color" class="btn btn-default btn-med" id="dark" class="selectionButtons">Dark</button> <!-- SRM 31+ -->
-                <button type="button" colorMin="0" colorMax="100" category="color" class="btn btn-default btn-med" id="colorNone" class="selectionButtons">No preference</button> 
-          
-            </div> <!-- color -->
-
-            <div class="container">
-                <h2 id="grainSectionFonts">Hoppiness</h2>
-                <button type="button" ibuMin="0" ibuMax="15" category="ibu" class="btn btn-default btn-med" id="notHoppy" class="selectionButtons">Not Hoppy</button> <!-- IBU 0-15 -->
-                <button type="button" ibuMin="16" ibuMax="30" category="ibu" class="brn btn-default btn-med" id="kindaHoppy" class="selectionButtons">Kind of Hoppy</button> <!-- IBU 16-30 -->
-                <button type="button" ibuMin="31" ibuMax="45" category="ibu" class="btn btn-default btn-med" id="hoppy" class="selectionButtons">Hoppy</button> <!-- IBU 31-45 -->
-                <button type="button" ibuMin="46" ibuMax="100" category="ibu" class="btn btn-default btn-med" id="veryHoppy" class="selectionButtons">Very Hoppy</button> <!-- IBU <=46 -->
-                <button type="button" ibuMin="0" ibuMax="100" category="ibu" class="btn btn-default btn-med" id="hoppyNone" class="selectionButtons">No preference</button> 
-              
-            </div> <!-- hoppiness -->
 
             <div class="container">
-                <h2 id="grainSectionFonts">ABV</h2>
-                <button type="button" abvMin="0" abvMax="5" category="abv" class="btn btn-default btn-med" id="low" class="selectionButtons">Low</button> <!-- ABV 0-5% -->
-                <button type="button" abvMin="5.1" abvMax="7.4" category="abv" class="btn btn-default btn-med" id= "lowmed" class="selectionButtons">Low to Medium</button> <!-- ABV 5.1-7.4% -->
-                <button type="button" abvMin="7.5" abvMax="10" category="abv" class="btn btn-default btn-med" id= "medhigh" class="selectionButtons">Medium to High</button> <!-- ABV 7.5-10% -->
-                <button type="button" abvMin="10.1" abvMax="100" category="abv" class="btn btn-default btn-med" id= "high" class="selectionButtons">High</button> <!-- ABV 10.1%+ -->
-                <button type="button" abvMin="0" abvMax="100" category="abv" class="btn btn-default btn-med" id= "abvNone" class="selectionButtons">No preference</button>
+                <div class = "btn-group">
+                   <h2 id="grainSectionFonts">Color</h2>
+                   <input type="radio" name="color" value=1 colorMin="0" colorMax="10" id="veryLight">
+                   <label class="btn btn-default btn-med" for="veryLight">Very Light</label>
+                   <input type="radio" name="color" value=2 colorMin="11" colorMax="20" id="medLight">
+                   <label class="btn btn-default btn-med" for="medLight">Light-Medium</label>
+                   <input type="radio" name="color" value=3 colorMin="21" colorMax="30" id="medDark">
+                   <label class="btn btn-default btn-med" for="medDark">Medium-Dark</label>
+                   <input type="radio" name="color" value=4 colorMin="31" colorMax="40" id="dark">
+                   <label class="btn btn-default btn-med" for="dark">Dark</label>
+                   <input type="radio" name="color" value=5 colorMin="31" colorMax="40" id="noPrefColor">
+                   <label class="btn btn-default btn-med" for="noPrefColor">No Preference</label>
+               </div>
+           </div>
 
-            </div> <!-- abv -->
+           <div class="container">
+               <div class = "btn-group">
+                   <h2 id="grainSectionFonts">Hoppiness</h2>
+                   <input type="radio" name="hoppy" value=1 ibuMin="0" ibuMax="15" id="hoppy1">
+                   <label class="btn btn-default btn-med" for="hoppy1">Not Hoppy</label>
+                   <input type="radio" name="hoppy" value=2 ibuMin="16" ibuMax="30" id="hoppy2">
+                   <label class="btn btn-default btn-med" for="hoppy2">A little Hoppy</label>
+                   <input type="radio" name="hoppy" value=3 ibuMin="31" ibuMax="45" id="hoppy3">
+                   <label class="btn btn-default btn-med" for="hoppy3">Hops Please</label>
+                   <input type="radio" name="hoppy" value=4 ibuMin="46" ibuMax="100" id="hoppy4">
+                   <label class="btn btn-default btn-med" for="hoppy4">Bring on the HOPS</label>
+                   <input type="radio" name="hoppy" value=5 ibuMin="0" ibuMax="100" id="hoppy5">
+                   <label class="btn btn-default btn-med" for="hoppy5">No Preference</label>
+               </div>
+           </div>
+
+           <div class="container">
+               <div class = "btn-group">
+                   <h2 id="grainSectionFonts">ABV</h2>
+                   <input type="radio" name="alcohol" value=1 abvMin="0" abvMax="5" id="ABV1">
+                   <label class="btn btn-default btn-med" for="ABV1">Low</label>
+                   <input type="radio" name="alcohol" value=2 abvMin="5.1" abvMax="7.4" id="ABV2">
+                   <label class="btn btn-default btn-med" for="ABV2">Low to Medium</label>
+                   <input type="radio" name="alcohol" value=3 abvMin="7.5" abvMax="10" id="ABV3">
+                   <label class="btn btn-default btn-med" for="ABV3">Medium to High</label>
+                   <input type="radio" name="alcohol" value=4 abvMin="10.1" abvMax="100" id="ABV4">
+                   <label class="btn btn-default btn-med" for="ABV4">High</label>
+                   <input type="radio" name="alcohol" value=5 abvMin="0" abvMax="100" id="ABV5">
+                   <label class="btn btn-default btn-med" for="ABV5">No Preference</label>
+               </div>
+           </div>
 
             <div class="container">
                 <h2 id="grainSectionFonts"></h2>
                 <button type="button" class="btn btn-default btn-med" id="submitButton">Submit</button>       
             </div> <!-- submit -->
-        </div>    
+
+        </div> <!-- selectBeers -->
         
         <div id="cards">
             <div class="container">
-                <h2 class="header recommendedBeers">Your Recommended Beers:</h2>
-              
+                <h2 class="header recommendedBeers">Your Recommended Beers:</h2>        
 
                 <div class="row" id="beerResults"></div>
                 
-
             </div>
         </div>
 
-        <!--map div-->
+        <!--map div
         <div id="yourMap">
             <div class="container mapContainer">
                 <div class="row">
@@ -132,7 +156,7 @@
         </div>
 
         <div id="map"></div>
-
+-->
 
         <!-- FAVES-->
         <div id="inspiration">
@@ -141,9 +165,9 @@
                 <div class="row teamPicksSection">
                     
                     <div class=".col-md-4">
-                        <div class="card card-avatar-fav teamPicks">
+                        <div class="card card-avatar teamCards">
                             <div class="waves-effect waves-block waves-light">
-                                <img class="activator" src="assets/img/jade.png">
+                                <img class="activator" src="../assets/img/Pernicious.jpg">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Sarah's Pick<br/>
@@ -153,9 +177,9 @@
                     </div>
                     
                     <div class=".col-md-4">
-                        <div class="card card-avatar-fav teamPicks">
+                        <div class="card card-avatar teamCards">
                             <div class="waves-effect waves-block waves-light">
-                                <img class="activator" src="">
+                                <img class="activator" src="../assets/img/hogwild.jpg">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Derek's Pick<br/>
@@ -167,9 +191,9 @@
                     </div>
                     
                     <div class=".col-md-4">
-                        <div class="card card-avatar-fav teamPicks">
+                        <div class="card card-avatar teamCards">
                             <div class="waves-effect waves-block waves-light">
-                                <img class="activator" src="">
+                                <img class="activator" src="../assets/img/starLight.jpg">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Meredith's Pick<br/>
@@ -180,9 +204,9 @@
                     </div>
 
                     <div class=".col-md-4">
-                        <div class="card card-avatar-fav teamPicks">
+                        <div class="card card-avatar teamCards">
                             <div class="waves-effect waves-block waves-light">
-                                <img class="activator" src="">
+                                <img class="activator" src="../assets/img/luckyBudda.jpg">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Julie's Pick<br/>
@@ -197,7 +221,70 @@
             </div>
         </div>
 
-        <!-- TEAM-->
+
+<div id="team">
+            <div class="container">
+                <h2 class="header teamTitle">The TEAM</h2>
+                <div class="row teamBusiness">
+                    
+                    <div class=".col-md-4">
+                        <div class="card card-avatar teamCards">
+                            <div class="waves-effect waves-block waves-light">
+                                <img class="activator" src="../assets/img/avatar sarah.png">
+                            </div>
+                            <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Sarah<br/>
+                                    <small><em><a class="red-text text-darken-1">Co-Founder</a></em>
+                                    </small>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class=".col-md-4">
+                        <div class="card card-avatar teamCards">
+                            <div class="waves-effect waves-block waves-light">
+                                <img class="activator" src="../assets/img/mer.png">
+                            </div>
+                            <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Meredith<br/>
+                                    <small><em><a class="red-text text-darken-1">Co-Founder</a></em>
+                                    </small>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=".col-md-4">
+                        <div class="card card-avatar teamCards">
+                            <div class="waves-effect waves-block waves-light">
+                                <img class="activator" src="../assets/img/derek.jpg">
+                            </div>
+                            <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Derek<br/>
+                                    <small><em><a class="red-text text-darken-1">Co-Founder</a></em>
+                                    </small>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=".col-md-4">
+                        <div class="card card-avatar teamCards">
+                            <div class="waves-effect waves-block waves-light">
+                                <img class="activator" src="">
+                            </div>
+                            <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Julie<br/>
+                                    <small><em><a class="red-text text-darken-1">Co-Founder</a></em>
+                                    </small>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+            </div> 
+        </div>               
+
+
+        <!-- TEAM
         <div id="team">
             <div class="container">
                 <h2 class="header text_b"> The TEAM</h2>
@@ -206,7 +293,7 @@
                     <div class="col s12 m3">
                         <div class="card card-avatar">
                             <div class="waves-effect waves-block waves-light">
-                                <img class="activator" src="assets/img/avatar sarah.png">
+                                <img class="activator" src="../assets/img/avatar sarah.png">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Sarah<br/>
@@ -231,7 +318,7 @@
                     <div class="col s12 m3">
                         <div class="card card-avatar">
                             <div class="waves-effect waves-block waves-light">
-                                <img class="activator" src="assets/img/derek.png">
+                                <img class="activator" src="">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Derek<br/>
@@ -256,7 +343,7 @@
                     <div class="col s12 m3">
                         <div class="card card-avatar">
                             <div class="waves-effect waves-block waves-light">
-                                <img class="activator" src="assets/img/mer.png">
+                                <img class="activator" src="../assets/img/mer.png">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Meredith<br/>
@@ -305,16 +392,12 @@
                 </div>
             </div>
         </div>
+        -->
 </div> <!-- main body -->
 
 
 
-    <script src = "assets/javascript/zipcode.js"></script>
-    <script src = "assets/javascript/brew.js"></script>
-        <!-- <script async defer
-           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl1DC0XlwyV4UkPh0dyODExOW7zOA9RC0&callback=initMap">
-        </script> -->
-    <!-- <script src = "assets/javascript/maps.js"></script>
-     -->
+
+    <script src = "../assets/javascript/brew.js"></script>
 </body>
 </html>
