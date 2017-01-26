@@ -69,12 +69,17 @@ function grabBeer() {
           // Checking if beer meets criteria
           if(Number(beerInfo.Color) > Number(srmMax) || Number(beerInfo.Color) < Number(srmMin)){
             falseCount++;
+            console.log(falseCount);
           }
           if(Number(beerInfo.Hoppiness) > Number(ibuMax) || Number(beerInfo.Hoppiness) < Number(ibuMin)){
             falseCount++;
+            console.log(falseCount);
+
           }
           if(Number(beerInfo.ABV) > Number(abvMax) || Number(beerInfo.ABV) < Number(abvMin)){
             falseCount++;
+            console.log(falseCount);
+
           }
           if(falseCount === 0 || falseCount === 1){
             if(brewExist === true){
