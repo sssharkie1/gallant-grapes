@@ -12,11 +12,12 @@ var brewExist = true; // purpose: if brewery has already been written to html pa
 
 // User selected criteria
 var srmMin = 0,
-    srmMax = 100,
+    srmMax = 1000,
     ibuMin = 0,
-    ibuMax = 100,
+    ibuMax = 1000,
     abvMin = 0,
-    abvMax = 100
+    abvMax = 1000,
+    noPref = 0;
 
 // Firebase
 var config = {
@@ -36,16 +37,6 @@ database.ref().push({
 
 
 // Functions
-function checkBeer(){ // Purpose: check beer against criteria
-
-
-
-  beerCount++;
-  if(beerCount < brewery.length){ // prompts grabBeer to run again if there are more breweries to search through
-    brewExist = true;
-    grabBeer();
-  }
-}
 
 function grabBeer() { // Purpose: check all beers of every brewery and match it to user criteria 
 
@@ -67,6 +58,7 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
 
         for (var j = 0; j < beerResult.length; j++) { // for loop to add qualified beers from 1 brewery to array
           var falseCount = 0; // purpose: checks how many criteria it meets (0 = meets all 3 criteria, 1 = close match)
+          var checkBeerCount = 0;
 
           beerInfo = {"Name" : beerResult[j].name,
                       "ABV" : beerResult[j].style.abvMax,
@@ -75,42 +67,58 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
                       "Description" : beerResult[j].style.description
                       } //end of beerInfo object
           
+          beer.push(beerInfo);
+
           // Checking if beer meets criteria
-          if(Number(beerInfo.Color) > Number(srmMax) || Number(beerInfo.Color) < Number(srmMin)){
-            falseCount++;
+          function checkBeer(value, min, max){
+            if(value < min || value > max){
+              falseCount++;
+            }
+            checkBeerCount++;
           }
-          if(Number(beerInfo.Hoppiness) > Number(ibuMax) || Number(beerInfo.Hoppiness) < Number(ibuMin)){
-            falseCount++;
-          }
-          if(Number(beerInfo.ABV) > Number(abvMax) || Number(beerInfo.ABV) < Number(abvMin)){
-            falseCount++;
-          }
-          if(falseCount === 0 || falseCount === 1){ // if beer meets criteria
+
+
+          checkBeer(Number(beerInfo.Color), Number(srmMin), Number(srmMax))
+          checkBeer(Number(beerInfo.Hoppiness), Number(ibuMin), Number(ibuMax))
+          checkBeer(Number(beerInfo.ABV), Number(abvMin), Number(abvMax));
+
+
+          if(falseCount < 2 && checkBeerCount === 3){ // if beer meets criteria
             if(brewExist === true){ // write brewery to pg only if it hasn't already been written to the pg
-              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
+              if(falseCount === 0 && noPref < 3000){
+                var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
 
-              $("#beerResults").append(brewDiv);
+                $("#beerResults").append(brewDiv);
 
-              var exactDiv = $("<div id='exact" + beerCount + "'>").append("<br>");
-              var closeDiv = $("<div id='close" + beerCount + "'>").append("<br>");
+                var exactDiv = $("<div id='exact" + beerCount + "'>").append("<br>");
+                var closeDiv = $("<div id='close" + beerCount + "'>").append("<br>");
 
-              $("#brewery" + beerCount).append(exactDiv).append(closeDiv);
-              
-              brewExist = false;
+                $("#brewery" + beerCount).append(exactDiv).append(closeDiv);
+                
+                brewExist = false;
+              }
+              else if (falseCount < 2 && noPref > 3000){
+                var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
+
+                $("#beerResults").append(brewDiv);
+
+                var exactDiv = $("<div id='exact" + beerCount + "'>").append("<br>");
+                var closeDiv = $("<div id='close" + beerCount + "'>").append("<br>");
+
+                $("#brewery" + beerCount).append(exactDiv).append(closeDiv);
+                
+                brewExist = false;
+              }
             }
 
             if(falseCount === 0){ // beer meets exact criteria
-
-              beer.push(beerInfo);
 
               var p = $("<p>").append("Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
 
               $("#exact" + beerCount).append(p);
             }
-            else if(falseCount === 1){ // beer is close to meeting criteria
+            else if(falseCount === 1 && noPref > 3000){ // beer is close to meeting criteria
               
-              beer.push(beerInfo);
-
               var p = $("<p>").append("*Close match* Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
               $("#close" + beerCount).append(p);
             }
@@ -118,7 +126,11 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
         }// end of for loop for beerResult
       } // end of if statement checking if there are beers avail in brewery
       
-      checkBeer();
+      beerCount++;
+      if(beerCount < brewery.length){ // prompts grabBeer to run again if there are more breweries to search through
+        brewExist = true;
+        grabBeer();
+      }
 
     }) // end of function(response)
   }  
@@ -192,7 +204,7 @@ function startOver(){
   brewCount = 0;
   beerCount = 0; 
   brewExist = true;// Purpose: reset all variables, remove everything written to index.html
-
+  noPref = 0;
 }
 
     
@@ -200,7 +212,7 @@ function startOver(){
 // Code to execute
 $("input:radio").on("click", function() { // sets user selected ranges based on which button clicked
 
-  var type = $(this).attr("name"); // grabs category (srm, ibv, abv)
+  var type = $(this).attr("name"); // grabs category (srm, hoppy, abv)
   // if statement here 
   
   // Set all ranges
@@ -208,11 +220,11 @@ $("input:radio").on("click", function() { // sets user selected ranges based on 
     srmMin = $(this).attr("colorMin");
     srmMax = $(this).attr("colorMax");
   }
-  else if(type === "ibu"){
+  else if(type === "hoppy"){
     ibuMin = $(this).attr("ibuMin");
     ibuMax = $(this).attr("ibuMax");
   }
-  else if(type === "abv"){
+  else if(type === "ABV"){
     abvMin = $(this).attr("abvMin");
     abvMax = $(this).attr("abvMax");
   }
@@ -221,13 +233,11 @@ $("input:radio").on("click", function() { // sets user selected ranges based on 
 
 
 $(document).on("click", "#submitButton", function() { // runs everything else
+  noPref = Number(srmMax) + Number(ibuMax) + Number(abvMax);
 
-  if(zipcodeArr.length > 0){
+  if (zipcodeArr.length > 0){
       startOver();
   }
-
-  //clear results div or however is displayed in html
-  // $("#beerResults").empty(); --> commented this out for now until we need it
 
   zipcode = document.getElementById("zipCode-input").value;
   
