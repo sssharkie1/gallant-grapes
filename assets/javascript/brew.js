@@ -78,16 +78,22 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
           // Checking if beer meets criteria
           if(Number(beerInfo.Color) > Number(srmMax) || Number(beerInfo.Color) < Number(srmMin)){
             falseCount++;
+            console.log(falseCount);
           }
           if(Number(beerInfo.Hoppiness) > Number(ibuMax) || Number(beerInfo.Hoppiness) < Number(ibuMin)){
             falseCount++;
+            console.log(falseCount);
+
           }
           if(Number(beerInfo.ABV) > Number(abvMax) || Number(beerInfo.ABV) < Number(abvMin)){
             falseCount++;
+            console.log(falseCount);
+
           }
-          if(falseCount === 0 || falseCount === 1){ // if beer meets criteria
-            if(brewExist === true){ // write brewery to pg only if it hasn't already been written to the pg
-              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>Address: " + brewery[beerCount].streetName + " " + brewery[beerCount].locality + ", " + brewery[beerCount].state + "<br>")
+          if(falseCount === 0 || falseCount === 1){
+            if(brewExist === true){
+              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br> Brewery: " + brewery[beerCount].name + "<br>" + "<a href=''>" + brewery[beerCount].website + "</a>" + "<br>Address: " + "<p>" + brewery[beerCount].streetName + "<br>" + brewery[beerCount].locality + ", " + brewery[beerCount].state + " " + brewery[beerCount].postalCode + "</p>" + "<br>");
+
 
               $("#beerResults").append(brewDiv);
 
@@ -107,6 +113,7 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
 
               $("#exact" + beerCount).append(p);
             }
+          
             else if(falseCount === 1){ // beer is close to meeting criteria
               
               beer.push(beerInfo);
@@ -146,7 +153,9 @@ function grabBrew() { // Purpose: add all breweries from all zip codes to brewer
                         "name" : breweryResult[i].brewery.name,
                         "streetName" : breweryResult[i].streetAddress,
                         "state" : breweryResult[i].region,
-                        "locality": breweryResult[i].locality 
+                        "locality": breweryResult[i].locality,
+                        "postalCode": breweryResult[i].postalCode,
+                        "website": breweryResult[i].brewery.website
                         } //end of breweryInfo object
 
           brewery.push(breweryInfo); // purpose: pushes current brewery's entire info (stored as object) into brewery array
