@@ -12,11 +12,11 @@ var brewExist = true; // purpose: if brewery has already been written to html pa
 
 // User selected criteria
 var srmMin = 0,
-    srmMax = 100,
+    srmMax = 0,
     ibuMin = 0,
-    ibuMax = 100,
+    ibuMax = 0,
     abvMin = 0,
-    abvMax = 100
+    abvMax = 0
 
 // Firebase
 var config = {
@@ -78,7 +78,7 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
           // Checking if beer meets criteria
           if(Number(beerInfo.Color) > Number(srmMax) || Number(beerInfo.Color) < Number(srmMin)){
             falseCount++;
-            console.log(falseCount);
+            // console.log(falseCount);
           }
           if(Number(beerInfo.Hoppiness) > Number(ibuMax) || Number(beerInfo.Hoppiness) < Number(ibuMin)){
             falseCount++;
@@ -217,11 +217,11 @@ $("input:radio").on("click", function() { // sets user selected ranges based on 
     srmMin = $(this).attr("colorMin");
     srmMax = $(this).attr("colorMax");
   }
-  else if(type === "ibu"){
+  else if(type === "hoppy"){
     ibuMin = $(this).attr("ibuMin");
     ibuMax = $(this).attr("ibuMax");
   }
-  else if(type === "abv"){
+  else if(type === "alcohol"){
     abvMin = $(this).attr("abvMin");
     abvMax = $(this).attr("abvMax");
   }
