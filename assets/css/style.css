@@ -23,7 +23,7 @@
     font-size: 6.0em;
     /*font-weight: 100;*/
     font-weight: 300;
-    color: #f28926
+    color: #d8781e
 }
 
 /* sarah note - Styles to search by, Our Favorites and The Team text*/
@@ -125,6 +125,10 @@ nav ul a {
   padding: 50px;
 }
 
+.btn-group {
+
+  margin-left: 160px;
+}
 /*SELECT LOCATION AND BEER QUALITIES DIV*/
 .btn-group input {
  display:none;
@@ -187,11 +191,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #zipCode-form{
-    margin-left: 70px;
+    margin-left: 200px;
 }
 
 #zipCode-input {
-  background-color: #e17d1f;
+  background-color: #e0dcd9;
 }
 
 #zipCode-input {
@@ -203,6 +207,12 @@ input[type=number]::-webkit-outer-spin-button {
   color: #fff
 }
 
+#submitButton {
+  margin-left: 165px;
+  background-color: #e0dcd9;
+  color: #d8781e;
+  font-weight: bolder;
+}
 .tableContainer {
   position: absolute;
     right: 10px;
@@ -211,7 +221,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .beerTable {
   text-align: center;
-
 }
 
 
