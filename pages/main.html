@@ -52,6 +52,102 @@
 
         <div id="selectBeers" style="background-image: url(../assets/img/grains6.jpg)">
 
+        <!--  <div class="tableContainer">
+
+                <div class="beerTable">Color Chart
+
+                    <table class="tg">
+                      <tr>
+                        <th class="tg-baqh"></th>
+                        <th class="tg-baqh">Minimum</th>
+                        <th class="tg-baqh">Maximum</th>
+                      </tr>
+                      <tr>
+                        <td class="tg-baqh">Very Light</td>
+                        <td class="tg-baqh">0</td>
+                        <td class="tg-baqh">10</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-yw4l">Light-Medium</td>
+                        <td class="tg-yw4l">10.1</td>
+                        <td class="tg-yw4l">20</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-yw4l">Medium-Dark</td>
+                        <td class="tg-yw4l">20.1</td>
+                        <td class="tg-yw4l">30</td>
+                      </tr>
+                        <tr>
+                        <td class="tg-yw4l">Dark</td>
+                        <td class="tg-yw4l">30.1</td>
+                        <td class="tg-yw4l">40</td>
+                      </tr>
+                    </table>
+                </div>
+
+                <div class="beerTable">IBU Chart (Hoppiness)
+
+                    <table class="tg">
+                      <tr>
+                        <th class="tg-baqh"></th>
+                        <th class="tg-baqh">Minimum</th>
+                        <th class="tg-baqh">Maximum</th>
+                      </tr>
+                      <tr>
+                        <td class="tg-baqh">Not Hoppy</td>
+                        <td class="tg-baqh">0</td>
+                        <td class="tg-baqh">15</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-yw4l">A Little Hoppy</td>
+                        <td class="tg-yw4l">15.1</td>
+                        <td class="tg-yw4l">30</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-yw4l">Hops Please</td>
+                        <td class="tg-yw4l">30.1</td>
+                        <td class="tg-yw4l">45</td>
+                      </tr>
+                        <tr>
+                        <td class="tg-yw4l">Bring on the HOPS</td>
+                        <td class="tg-yw4l">45.1</td>
+                        <td class="tg-yw4l">and up</td>
+                      </tr>
+                    </table>
+                </div>
+
+                <div class="beerTable">ABV Chart (Alcohol by Volume)
+
+                    <table class="tg">
+                      <tr>
+                        <th class="tg-baqh"></th>
+                        <th class="tg-baqh">Minimum</th>
+                        <th class="tg-baqh">Maximum</th>
+                      </tr>
+                      <tr>
+                        <td class="tg-baqh">Low</td>
+                        <td class="tg-baqh">0</td>
+                        <td class="tg-baqh">5</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-yw4l">Low to Medium</td>
+                        <td class="tg-yw4l">5.1</td>
+                        <td class="tg-yw4l">7.4</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-yw4l">Medium to High</td>
+                        <td class="tg-yw4l">7.5</td>
+                        <td class="tg-yw4l">10</td>
+                      </tr>
+                        <tr>
+                        <td class="tg-yw4l">High</td>
+                        <td class="tg-yw4l">10.1</td>
+                        <td class="tg-yw4l">and up</td>
+                      </tr>
+                    </table>
+                </div>
+            </div> -->
+
             <div id="zipCode-form"> 
                   <h2 id="grainSectionFonts">Enter a Zip Code <span id="zipRequired">*Required*</span></h2>
                 <input type="number" id="zipCode-input">
@@ -91,6 +187,8 @@
                    <input type="radio" name="color" value=5 colorMin="31" colorMax="40" id="noPrefColor">
                    <label class="btn btn-default btn-med" for="noPrefColor">No Preference</label>
                </div>
+
+
            </div>
 
            <div class="container">
@@ -98,7 +196,7 @@
                    <h2 id="grainSectionFonts">Hoppiness</h2>
                    <input type="radio" name="hoppy" value=1 ibuMin="0" ibuMax="15" id="hoppy1">
                    <label class="btn btn-default btn-med" for="hoppy1">Not Hoppy</label>
-                   <input type="radio" name="hoppy" value=2 ibuMin="16" ibuMax="30" id="hoppy2">
+                   <input type="radio" name="hoppy" value=2 ibuMin="15.1" ibuMax="30" id="hoppy2">
                    <label class="btn btn-default btn-med" for="hoppy2">A little Hoppy</label>
                    <input type="radio" name="hoppy" value=3 ibuMin="31" ibuMax="45" id="hoppy3">
                    <label class="btn btn-default btn-med" for="hoppy3">Hops Please</label>
@@ -129,7 +227,7 @@
                 <h2 id="grainSectionFonts"></h2>
                 <button type="button" class="btn btn-default btn-med" id="submitButton">Submit</button>       
             </div> <!-- submit -->
-
+           
         </div> <!-- selectBeers -->
         
         <div id="cards">
