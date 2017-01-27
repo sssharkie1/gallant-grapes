@@ -156,7 +156,7 @@ function grabBrew() { // Purpose: add all breweries from all zip codes to brewer
    
   if(brewCount < zipcodeArr.length){ // purpose: counts how many times the AJAX call has run;
       
-    var queryURL = "https://utcors1.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcodeArr[brewCount];
+    var queryURL = "https://utcors1.herokuapp.com/https://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcodeArr[brewCount];
 
     $.ajax({
       url: queryURL,
