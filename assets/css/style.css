@@ -23,7 +23,7 @@
     font-size: 6.0em;
     /*font-weight: 100;*/
     font-weight: 300;
-    color: #E17D1F
+    color: #f28926
 }
 
 /* sarah note - Styles to search by, Our Favorites and The Team text*/
@@ -170,6 +170,7 @@ label.btn:hover {
   background-repeat: no-repeat;
   background-size: 100%;
   padding: 20px;
+  position: relative;
 }
 
 #grainSectionFonts {
@@ -202,7 +203,29 @@ input[type=number]::-webkit-outer-spin-button {
   color: #fff
 }
 
+.tableContainer {
+  position: absolute;
+    right: 10px;
+    background-color:#e17d1f; 
+      height: 500px;
+}
+.beerTable {
+  text-align: center;
 
+}
+
+
+/*tables*/
+.tg  {
+  border-collapse:collapse;
+  border-spacing:0;
+
+  margin: 15px;
+}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:2px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:2px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
 /*FAV DIV*/
 
 .teamFavs {
