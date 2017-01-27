@@ -29,15 +29,11 @@ var config = {
     databaseURL: "https://gallant-grapes-1484705431926.firebaseio.com",
     storageBucket: "gallant-grapes-1484705431926.appspot.com",
     messagingSenderId: "605616569143"
-};
-firebase.initializeApp(config);
+  };
+  firebase.initializeApp(config);
+
 
 var database = firebase.database();
-
-database.ref().push({
-  // variables to push to firebase
-});
-
 
 // Functions
 function checkBeer(){ // Purpose: check beer against criteria
@@ -98,7 +94,12 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
           }
           if(falseCount === 0 || falseCount === 1){
             if(brewExist === true){
-              var brewDiv = $("<div id='brewery" + beerCount + "'>").append("<br><b> Brewery: </b>" + brewery[beerCount].name + "<br>" + "<a href='brewery[beerCount].website'>" + brewery[beerCount].website + "</a>" + "<br><b>Address: </b>" + "<p>" + brewery[beerCount].streetName + "<br>" + brewery[beerCount].locality + ", " + brewery[beerCount].state + " " + brewery[beerCount].postalCode + "</p>");
+              var brewDiv = $("<div id='brewery" + beerCount + "'>")
+                .append("<br><b> Brewery: </b>" + brewery[beerCount].name + "<br>" + 
+                  "<a target = '_blank' href='" + brewery[beerCount].website + "'>" + brewery[beerCount].website + "</a>" + 
+                  "<br><b>Address: </b>" + "<p>" + brewery[beerCount].streetName + 
+                  "<br>" + brewery[beerCount].locality + ", " + brewery[beerCount].state + 
+                  " " + brewery[beerCount].postalCode + "</p>");
 
 
               $("#beerResults").append(brewDiv);
@@ -242,6 +243,7 @@ $("input:radio").on("click", function() { // sets user selected ranges based on 
     abvMax = $(this).attr("abvMax");
   }
 
+
 }) // end on-click for buttons
 
 
@@ -271,6 +273,14 @@ $(document).on("click", "#submitButton", function() { // runs everything else
 
   $("#zipCode-input").val(""); // clears zip code field
 
+  database.ref().push({//adding set values to firebase
+    srmMin,
+    srmMax,
+    ibuMin,
+    ibuMax,
+    abvMin,
+    abvMax
+});
   return false;
 
 });//end of on click results
