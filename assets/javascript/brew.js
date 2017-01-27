@@ -38,7 +38,7 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
 
   if(beerCount < brewery.length){ // purpose: count how many times AJAX call has been run (should be = to # of breweries)
     
-    var queryBreweryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/brewery/" + brewery[beerCount].id + "/beers/?key=9bb3bc076d572ad09b636ac87cc944c9";
+    var queryBreweryURL = "https://utcors1.herokuapp.com/https://api.brewerydb.com/v2/brewery/" + brewery[beerCount].id + "/beers/?key=9bb3bc076d572ad09b636ac87cc944c9";
 
     $.ajax({
       url: queryBreweryURL,
@@ -156,7 +156,7 @@ function grabBrew() { // Purpose: add all breweries from all zip codes to brewer
    
   if(brewCount < zipcodeArr.length){ // purpose: counts how many times the AJAX call has run;
       
-    var queryURL = "http://utcors1.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcodeArr[brewCount];
+    var queryURL = "https://utcors1.herokuapp.com/https://api.brewerydb.com/v2/locations/?key=9bb3bc076d572ad09b636ac87cc944c9&postalCode=" + zipcodeArr[brewCount];
 
     $.ajax({
       url: queryURL,
@@ -200,7 +200,7 @@ function grabBrew() { // Purpose: add all breweries from all zip codes to brewer
 
 function zipCode() { // Purpose: add all zip codes with 5 miles of user input zipcode to zipcodeArr
 
-  var zipcodeURL = "http://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/rYEGWOzlRcstzfZD3PJSDntYcHBzvOIWNmDJbc43owwXLvBPlkIYIcXVTzvpndlb/radius.json/" + zipcode + "/5/mile?minimal"
+  var zipcodeURL = "https://utcors1.herokuapp.com/https://www.zipcodeapi.com/rest/rYEGWOzlRcstzfZD3PJSDntYcHBzvOIWNmDJbc43owwXLvBPlkIYIcXVTzvpndlb/radius.json/" + zipcode + "/5/mile?minimal"
 
   $.ajax({
     url: zipcodeURL,
