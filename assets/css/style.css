@@ -8,13 +8,13 @@
 /*HEADER*/
 .span_h2 {
     font-weight: 300;
-    color: #E17D1F 
+    color: #E17D1F;
 }
 
 
 /*BACKGROUND*/
 .default_color {
-    background-color: #E17D1F 
+    background-color: #E17D1F;
 }
 
 /* sarah note - title header only*/
@@ -23,17 +23,19 @@
     font-size: 6.0em;
     /*font-weight: 100;*/
     font-weight: 300;
-    color: #d8781e
+    color: #d8781e;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+ 
 }
 
 /* sarah note - Styles to search by, Our Favorites and The Team text*/
 .text_b {
-    color: #e17d1f
+    color: #e17d1f;
 }
 
 /* sarah note - cant find*/
 .default_color_text {
-    color: green 
+    color: green;
 }
 /*APPLIES TO ALL CONTAINERS*/
 .container {
@@ -44,7 +46,7 @@
 
 .container .row {
     margin-left: -0.75rem;
-    margin-right: -0.75rem
+    margin-right: -0.75rem;
 }
 
 /*NAVBAR
@@ -56,7 +58,7 @@
 
 #nav_f {
     box-shadow: none !important;
-    -webkit-box-shadow: none !important
+    -webkit-box-shadow: none !important;
 }
 #navLinks {
   float: right;
@@ -76,7 +78,7 @@ nav ul a {
     display: block;
     margin-top: 5px;
     font-weight: 300;
-    padding: 0px 15px
+    padding: 0px 15px;
 }
 
 #logo-container {
@@ -87,7 +89,7 @@ nav ul a {
 /*sarah note - placement of header nav bar only*/
 .logo-navbar{
     height: 7rem;
-    padding-right: .5rem
+    padding-right: .5rem;
 }
 
 /*TITLE DIV*/
@@ -101,21 +103,21 @@ nav ul a {
 
 /* APPLIES TO SCROLLING TITLE BAR*/
 .cd-headline.type b {
-    visibility: hidden
+    visibility: hidden;
 }
 
 .cd-headline.type b.is-visible {
-    visibility: visible
+    visibility: visible;
 }
 
 .cd-headline.type i {
     position: absolute;
-    visibility: hidden
+    visibility: hidden;
 }
 
 .cd-headline.type i.in {
     position: relative;
-    visibility: visible
+    visibility: visible;
 }
 
 /*SECOND DIV-MISSION STATEMENT*/
@@ -201,7 +203,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .invalidZip {
-  color: #fff
+  color: #fff;
 }
 
 #submitButton {
@@ -250,7 +252,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #92a55e;
 }
 .card-content a {
-    color: #fff
+    color: #fff;
 }
 
 .teamCards {

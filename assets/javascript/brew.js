@@ -1,4 +1,5 @@
 $(document).ready(function() {
+$(".progress").hide();
 
 // Variables
 var zipcode = 0, // to be replaced with user input
@@ -82,6 +83,8 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
           }
           if(falseCount === 0 || falseCount === 1){
             if(brewExist === true){
+              $(".progress").hide();
+
               var brewDiv = $("<div id='brewery" + beerCount + "'>")
                 .append("<br><b> Brewery: </b>" + brewery[beerCount].name + "<br>" + 
                   "<a target = '_blank' href='" + brewery[beerCount].website + "'>" + brewery[beerCount].website + "</a>" + 
@@ -131,12 +134,12 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
       } // end of if statement checking if there are beers avail in brewery
 
 
-       beerCount++;
+      beerCount++;
       
-  if(beerCount < brewery.length){ // prompts grabBeer to run again if there are more breweries to search through
-    brewExist = true;
-    grabBeer();
-  }
+      if(beerCount < brewery.length){ // prompts grabBeer to run again if there are more breweries to search through
+        brewExist = true;
+        grabBeer();
+      }
     }) // end of function(response)
   }  
 };//end of grabBeer
@@ -204,7 +207,7 @@ function zipCode() { // Purpose: add all zip codes with 5 miles of user input zi
 
 function startOver(){
   $("#beerResults").empty() // clears previous beer + brewery results
-
+  $(".progress").show();
   // Reset all variables and arrays
   zipcodeArr = [];
   brewery = [];
