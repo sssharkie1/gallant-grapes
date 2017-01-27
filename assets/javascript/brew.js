@@ -1,5 +1,6 @@
 $(document).ready(function() {
 $(".progress").hide();
+$(".results").hide();
 
 // Variables
 var zipcode = 0, // to be replaced with user input
@@ -7,7 +8,6 @@ var zipcode = 0, // to be replaced with user input
 
 var brewery = []; // holds every brewery info 
 var beer = [];
-
 
 var brewCount = 0; 
 var beerCount = 0;
@@ -20,8 +20,6 @@ var srmMin = 0,
     ibuMax = 0,
     abvMin = 0,
     abvMax = 0;
-
-var k = 0;//counter if falseCount is 1
 
 // Firebase
 var config = {
@@ -49,14 +47,11 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
     }).done(function(response){
 
       if(response.hasOwnProperty("data")){ // makes sure brewery HAS beers available   
-
-        // var beer = [];
-        
+        // var beer = [];        
         var beerResult = response.data;
 
         for (var j = 0; j < beerResult.length; j++) { // for loop to add qualified beers from 1 brewery to array
           var falseCount = 0; // purpose: checks how many criteria it meets (0 = meets all 3 criteria, 1 = close match)
-          console.log(beer);
           beerInfo = {"Name" : beerResult[j].name,
                       "ABV" : beerResult[j].style.abvMax,
                       "Hoppiness" : beerResult[j].style.ibuMin,
@@ -64,7 +59,7 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
                       "Description" : beerResult[j].style.description
                       } //end of beerInfo object
           
-              beer.push(beerInfo);
+          beer.push(beerInfo);
 
           // Checking if beer meets criteria
           if(Number(beerInfo.Color) > Number(srmMax) || Number(beerInfo.Color) < Number(srmMin)){
@@ -74,12 +69,10 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
           if(Number(beerInfo.Hoppiness) > Number(ibuMax) || Number(beerInfo.Hoppiness) < Number(ibuMin)){
             falseCount++;
             // console.log(falseCount);
-
           }
           if(Number(beerInfo.ABV) > Number(abvMax) || Number(beerInfo.ABV) < Number(abvMin)){
             falseCount++;
             // console.log(falseCount);
-
           }
           if(falseCount === 0 || falseCount === 1){
             if(brewExist === true){
@@ -91,7 +84,6 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
                   "<br><b>Address: </b>" + "<p>" + brewery[beerCount].streetName + 
                   "<br>" + brewery[beerCount].locality + ", " + brewery[beerCount].state + 
                   " " + brewery[beerCount].postalCode + "</p>");
-
 
               $("#beerResults").append(brewDiv);
 
@@ -109,12 +101,9 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
               if (!beer[j].Hoppiness) {beer[j].Hoppiness = "Not Available"};
               if (!beer[j].Color) {beer[j].Color = "Not Available"};
               if (!beer[j].Description) {beer[j].Description = "Not Available"};
-
                 
               var p = $("<p>").append("*Perfect Match* Name of Beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
-
-              $("#exact" + beerCount).append(p);
-              
+              $("#exact" + beerCount).append(p); 
             }
 
             else if(falseCount === 1){ // beer is close to meeting criteria
@@ -124,7 +113,8 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
               if (!beer[j].Color) {beer[j].Color = "Not Available"};
               if (!beer[j].Description) {beer[j].Description = "Not Available"};
 
-              var p = $("<p>").append("*Close Match* Name of Beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
+              var p = $("<p>").append("*Close Match* Name of Beer: " + beer[j].Name + " | ABV: " +
+               beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
               
               $("#close" + beerCount).append(p); 
               
@@ -132,7 +122,6 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
           } // end of if-statement for beer that meets criteria (exact or close)     
         }// end of for loop for beerResult
       } // end of if statement checking if there are beers avail in brewery
-
 
       beerCount++;
       
@@ -142,6 +131,11 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
       }
     }) // end of function(response)
   }  
+  else if (brewery.length === 0) {
+    $("#beerResults").append("No Results: Please Try Again!");
+    $(".progress").hide();
+
+  }
 };//end of grabBeer
 
 
@@ -186,6 +180,9 @@ function grabBrew() { // Purpose: add all breweries from all zip codes to brewer
 
     })//end of function(response)
   } // if statement
+  else if (brewCount === 0){
+    $("#beerResults").append("No Results");
+  }
 } // end function grabBrew()
 
 function zipCode() { // Purpose: add all zip codes with 5 miles of user input zipcode to zipcodeArr
@@ -211,6 +208,7 @@ function startOver(){
   // Reset all variables and arrays
   zipcodeArr = [];
   brewery = [];
+  beer = [];
 
   brewCount = 0;
   beerCount = 0; 
@@ -223,8 +221,6 @@ function startOver(){
 $("input:radio").on("click", function() { // sets user selected ranges based on which button clicked
 
   var type = $(this).attr("name"); // grabs category (srm, ibv, abv)
-  // if statement here 
-  
   // Set all ranges
   if(type === "color"){ 
     srmMin = $(this).attr("colorMin");
@@ -239,18 +235,12 @@ $("input:radio").on("click", function() { // sets user selected ranges based on 
     abvMax = $(this).attr("abvMax");
   }
 
-
 }) // end on-click for buttons
 
 
 $(document).on("click", "#submitButton", function() { // runs everything else
   startOver();
-  // if(zipcodeArr.length > 0){
-  //     startOver();
-  // }
-
-  //clear results div or however is displayed in html
-  // $("#beerResults").empty(); --> commented this out for now until we need it
+  $(".results").show();
 
   zipcode = document.getElementById("zipCode-input").value;
   
@@ -261,7 +251,7 @@ $(document).on("click", "#submitButton", function() { // runs everything else
     // $("#zipCode-form").prepend("<p class = 'invalidZip'>" + "Enter Valid Zip Code" + "</p>");
     $(".validZip").append("<p class = 'invalidZip'>" + "Enter Valid Zip Code" + "</p>");
 
-  }
+  } 
   else {
     $(".invalidZip").remove();
       zipCode();
