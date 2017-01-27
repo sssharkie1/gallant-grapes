@@ -15,11 +15,11 @@ var brewExist = true; // purpose: if brewery has already been written to html pa
 
 // User selected criteria
 var srmMin = 0,
-    srmMax = 0,
+    srmMax = 100,
     ibuMin = 0,
-    ibuMax = 0,
+    ibuMax = 100,
     abvMin = 0,
-    abvMax = 0;
+    abvMax = 100;
 
 // Firebase
 var config = {
@@ -49,6 +49,8 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
       if(response.hasOwnProperty("data")){ // makes sure brewery HAS beers available   
         // var beer = [];        
         var beerResult = response.data;
+        var noBeersCount = 0;//single beer that doesn't match user input within for loop
+        var noMatchingBeers = 0;//no beers match within brewery
 
         for (var j = 0; j < beerResult.length; j++) { // for loop to add qualified beers from 1 brewery to array
           var falseCount = 0; // purpose: checks how many criteria it meets (0 = meets all 3 criteria, 1 = close match)
@@ -119,19 +121,30 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
               $("#close" + beerCount).append(p); 
               
             }
-          } // end of if-statement for beer that meets criteria (exact or close)     
+          } // end of if-statement for beer that meets criteria (exact or close)  
+          else if (falseCount > 1){
+            noMatchingBeers++;
+          }   
+          if (noMatchingBeers === beerResult.length) {
+            noBeersCount ++;
+           }
         }// end of for loop for beerResult
+  
       } // end of if statement checking if there are beers avail in brewery
 
-      beerCount++;
+      beerCount++;//counts up after all beers gone through at each brewery in array
       
       if(beerCount < brewery.length){ // prompts grabBeer to run again if there are more breweries to search through
         brewExist = true;
         grabBeer();
       }
+      else if (noBeersCount ===beerCount){//no beers within existing brewery that match users input
+        $("#beerResults").append("No Results: Please Try Again!");
+        $(".progress").hide();
+      }
     }) // end of function(response)
   }  
-  else if (brewery.length === 0) {
+  else if (brewery.length === 0) {//no breweries in zipcode provided
     $("#beerResults").append("No Results: Please Try Again!");
     $(".progress").hide();
 
@@ -194,12 +207,11 @@ function zipCode() { // Purpose: add all zip codes with 5 miles of user input zi
     method: "GET",
     headers: { "X-Requested-With": "" },
   }).done(function(response){
-
+  
     zipcodeArr = response.zip_codes; 
     grabBrew();
 
   }) // end of function(response)
-
 } // end of function zipCode
 
 function startOver(){
@@ -213,8 +225,6 @@ function startOver(){
   brewCount = 0;
   beerCount = 0; 
   brewExist = true;// Purpose: reset all variables, remove everything written to index.html
-  // k = 0;
-
 }
 
 // Code to execute
@@ -247,8 +257,7 @@ $(document).on("click", "#submitButton", function() { // runs everything else
   if (zipcode.length <= 4 || zipcode.length > 5) {
     event.preventDefault();
     $(".invalidZip").remove();
-
-    // $("#zipCode-form").prepend("<p class = 'invalidZip'>" + "Enter Valid Zip Code" + "</p>");
+    $(".progress").hide();
     $(".validZip").append("<p class = 'invalidZip'>" + "Enter Valid Zip Code" + "</p>");
 
   } 
