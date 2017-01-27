@@ -195,11 +195,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #zipCode-input {
-  background-color: #e0dcd9;
-}
-
-#zipCode-input {
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   text-align: center;
 }
 
@@ -336,6 +333,7 @@ nav,
 
 #beerResults {
   color: #fff;
+  font-size: 18px;
 }
 /*NOT USED*/
 /*sarah note-for map section only*/

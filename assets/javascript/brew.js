@@ -108,7 +108,7 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
               if (!beer[j].Description) {beer[j].Description = "Not Available"};
 
                 
-              var p = $("<p>").append("Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
+              var p = $("<p>").append("*Perfect Match* Name of Beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
 
               $("#exact" + beerCount).append(p);
               
@@ -121,7 +121,7 @@ function grabBeer() { // Purpose: check all beers of every brewery and match it 
               if (!beer[j].Color) {beer[j].Color = "Not Available"};
               if (!beer[j].Description) {beer[j].Description = "Not Available"};
 
-              var p = $("<p>").append("*Close match* Name of beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
+              var p = $("<p>").append("*Close Match* Name of Beer: " + beer[j].Name + " | ABV: " + beer[j].ABV + "% | Hoppiness: " + beer[j].Hoppiness + " | Color: " + beer[j].Color);     
               
               $("#close" + beerCount).append(p); 
               
