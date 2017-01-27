@@ -23,7 +23,7 @@
     font-size: 6.0em;
     /*font-weight: 100;*/
     font-weight: 300;
-    color: #E17D1F
+    color: #d8781e
 }
 
 /* sarah note - Styles to search by, Our Favorites and The Team text*/
@@ -47,8 +47,17 @@
     margin-right: -0.75rem
 }
 
-/*NAVBAR*/
+/*NAVBAR
 
+/*sarah note - affects top bottle image/cartoon in nav bar*/
+#bottle {
+
+}
+
+#nav_f {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important
+}
 #navLinks {
   float: right;
 }
@@ -70,9 +79,14 @@ nav ul a {
     padding: 0px 15px
 }
 
+#logo-container {
+  size: 200%;
+  color: #fff;
+  font-size: 34px;
+}
 /*sarah note - placement of header nav bar only*/
 .logo-navbar{
-    height: 3rem;
+    height: 7rem;
     padding-right: .5rem
 }
 
@@ -111,17 +125,11 @@ nav ul a {
   padding: 50px;
 }
 
-/*SELECT LOCATION AND BEER QUALITIES DIV*/
+.btn-group {
 
-/*buttons*/
-.btns {
-  margin: 20px;
-border-top-left-radius: 0;
- border-top-right-radius: 0;
- border-bottom-right-radius: 0;
- border-top-right-radius: 0;
+  margin-left: 160px;
 }
-
+/*SELECT LOCATION AND BEER QUALITIES DIV*/
 .btn-group input {
  display:none;
   border-top-left-radius: 0;
@@ -166,6 +174,7 @@ label.btn:hover {
   background-repeat: no-repeat;
   background-size: 100%;
   padding: 20px;
+  position: relative;
 }
 
 #grainSectionFonts {
@@ -182,15 +191,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #zipCode-form{
-    margin-left: 70px;
+    margin-left: 200px;
 }
 
 #zipCode-input {
-  background-color: #e17d1f;
-}
-
-#zipCode-input {
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   text-align: center;
 }
 
@@ -198,7 +204,34 @@ input[type=number]::-webkit-outer-spin-button {
   color: #fff
 }
 
+#submitButton {
+  margin-left: 165px;
+  background-color: #e0dcd9;
+  color: #d8781e;
+  font-weight: bolder;
+}
+.tableContainer {
+  position: absolute;
+    right: 10px;
+    background-color:#e17d1f; 
+      height: 500px;
+}
+.beerTable {
+  text-align: center;
+}
 
+
+/*tables*/
+.tg  {
+  border-collapse:collapse;
+  border-spacing:0;
+
+  margin: 15px;
+}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:2px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:2px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
 /*FAV DIV*/
 
 .teamFavs {
@@ -293,13 +326,15 @@ nav,
   color: #fff;
 }
 
-
 .teamBusiness {
   display: inline-flex;
   margin-left: 220px;
 }
 
-
+#beerResults {
+  color: #fff;
+  font-size: 18px;
+}
 /*NOT USED*/
 /*sarah note-for map section only*/
 /*#map {
@@ -328,11 +363,7 @@ img.cardImage {
     padding-top: 4rem
 }
 
-/*sarah note - affects top bottle image/cartton in nav bar
-#nav_f {
-    box-shadow: none !important;
-    -webkit-box-shadow: none !important
-}
+
 /* - sarah note - affects the "find your.." text above maps*/
 /*.text_h2 {
     font-weight: 100;
