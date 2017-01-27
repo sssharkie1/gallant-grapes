@@ -3,46 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Age Verification</title>
-  <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen, projection"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
   <style> @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed'); </style>
-  <!-- Bootstrap CDN-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen, projection"/>
   <link rel="stylesheet" type="text/css" href="assets/css/splash.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 </head>
 <body>
-  <div class="container bubbles" style="background-image: url(assets/img/bubbles.jpg)" align="center">
-    <div>
-      <div id="title">
-        <h1>Welcome to Find-A-Brew</h1>
-          <p>First, the formalities...</p>
-      </div>
-      <div id=welcome>
-      </div>
-      <div class="center-block" id="ageCheck">
-        <h2>ARE YOU 21 OR OLDER?</h2><br>
-        <a href="pages/main.html" class="waves-effect waves-light btn-large black"><i class="material-icons left">play_arrow</i>YES</a> 
-        <a href="#" class="waves-effect waves-light btn-large black noButton"><i class="material-icons left">not_interested</i>NO</a> 
-      </div>
+
+  <video autoplay loop id="background">
+    <source src="assets/img/beer.mp4" type="video/mp4">
+  </video>
+
+  <div class="container">   
+    <div class="center-block row" id="ageCheck">
+      <h1>Welcome to Find-A-Brew</h1>
+      <h2>First, the formalities...</h2><br>
+      <h2>ARE YOU 21 OR OLDER?</h2><br>
+
+      <a href="pages/main.html" class="waves-effect waves-light btn-large black"><i class="material-icons left">play_arrow</i>YES</a> 
+      <a href="#modal1" class="waves-effect waves-light btn-large black"><i class="material-icons left">not_interested</i>NO </a> 
     </div>
   </div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>I don't think so kid!</h4>
+      <img src="assets/img/goodbye.gif">
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">( ̵˃﹏˂̵ )</a>
+    </div>
+  </div>
+
+
 <script>
-          $(document).on("click", ".noButton", function(e) {
-              bootbox.alert("I don't think so kid!", function() {
-              });
-          });
-  </script>
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+</script>
 </body>
 </html>

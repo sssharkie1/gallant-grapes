@@ -6,6 +6,7 @@
     <title>Find-A-Brew-Part2</title>
     <link rel="stylesheet" href="../assets/css/reset.css"> 
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/progressbar.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
@@ -232,7 +233,11 @@
         
         <div id="cards">
             <div class="container">
-                <h2 class="header recommendedBeers">Your Recommended Beers:</h2>        
+                <h2 class="header recommendedBeers">Your Recommended Beers:</h2>   
+
+                <div class="progress">
+                  <div class="indeterminate"></div>
+                </div>
 
                 <div class="row" id="beerResults"></div>
                 
